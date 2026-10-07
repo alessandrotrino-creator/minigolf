@@ -106,15 +106,15 @@ table.sc tr.rel td{font-weight:500}
 .big-score{font-family:var(--f-display);font-size:56px;margin:6px 0 0;line-height:1}
 .big-score.u{color:var(--good)} .big-score.o{color:var(--coral)} .big-score.e{color:#fff}
 /* Laboratorio drawer */
-.lab{position:absolute;top:0;right:0;bottom:0;width:min(370px,100%);box-sizing:border-box;overflow:auto;z-index:4;background:rgba(27,20,45,.97);border-left:1px solid var(--line);padding:14px 16px 20px;box-shadow:-20px 0 50px rgba(0,0,0,.4)}
+aside.lab{position:absolute;top:0;right:0;bottom:0;width:min(370px,100%);box-sizing:border-box;overflow:auto;z-index:4;background:rgba(27,20,45,.97);border-left:1px solid var(--line);padding:14px 16px 20px;box-shadow:-20px 0 50px rgba(0,0,0,.4)}
 .labhead{display:flex;align-items:center;justify-content:space-between;gap:10px}
 .labhead h3{font-family:var(--f-display);font-weight:400;font-size:26px;margin:0;color:var(--gold);text-shadow:0 3px 0 var(--gold-deep)}
-.lab section{margin-top:16px;padding-top:14px;border-top:1px solid var(--line);display:grid;gap:8px}
+aside.lab section{margin-top:16px;padding-top:14px;border-top:1px solid var(--line);display:grid;gap:8px}
 .lab-t{font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);font-weight:800}
 .lab-t small{text-transform:none;letter-spacing:0;font-weight:600;margin-left:6px;color:var(--gold)}
-.lab select{width:100%;background:var(--raised);color:var(--text);border:1px solid var(--line);border-radius:10px;padding:8px 10px;font:inherit;font-size:14px}
-.lab select:focus-visible,.lab input[type=range]:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
-.lab input[type=range]{width:100%;accent-color:var(--gold);margin:0}
+aside.lab select{width:100%;background:var(--raised);color:var(--text);border:1px solid var(--line);border-radius:10px;padding:8px 10px;font:inherit;font-size:14px}
+aside.lab select:focus-visible,aside.lab input[type=range]:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+aside.lab input[type=range]{width:100%;accent-color:var(--gold);margin:0}
 .sl{display:grid;gap:4px}
 .sl>span{display:flex;justify-content:space-between;font-size:13px;font-weight:600}
 .sl b{font-family:var(--f-mono);font-weight:500;color:var(--gold);font-variant-numeric:tabular-nums}
@@ -126,8 +126,8 @@ table.sc tr.rel td{font-weight:500}
 .shead{display:flex;align-items:center;gap:8px;font-size:14px}
 .sw2{width:18px;height:18px;border-radius:5px;box-shadow:inset 0 0 0 2px rgba(255,255,255,.6);flex:none}
 .shead .note{margin-left:auto;font-size:11px;color:var(--muted)}
-.lab .row{margin-top:4px}
-.lab .btn{padding:9px 14px;font-size:14px}
+aside.lab .row{margin-top:4px}
+aside.lab .btn{padding:9px 14px;font-size:14px}
 /* Editor */
 #app.editing .chips,#app.editing .dock,#app.editing #bCard{display:none!important}
 .edtools{position:absolute;left:0;top:0;bottom:0;width:158px;box-sizing:border-box;overflow-y:auto;overflow-x:hidden;z-index:3;background:rgba(27,20,45,.96);border-right:1px solid var(--line);padding:10px 8px;display:flex;flex-direction:column;gap:3px}
@@ -137,7 +137,7 @@ table.sc tr.rel td{font-weight:500}
 .tool[aria-pressed="true"]{background:#3a2d4f;border-color:var(--gold);color:var(--gold)}
 .tool:focus-visible{outline:2px solid var(--gold);outline-offset:1px}
 .tool i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:8px;vertical-align:-1px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.4)}
-.edside{width:310px;z-index:3}
+aside.edside{width:310px;z-index:3}
 .fld{display:grid;gap:4px;font-size:12px;color:var(--muted);font-weight:600}
 .fld2{display:grid;grid-template-columns:1fr 1.6fr;gap:8px}
 .edside input[type=text],.edside textarea{width:100%;box-sizing:border-box;background:var(--raised);color:var(--text);border:1px solid var(--line);border-radius:10px;padding:8px 10px;font:inherit;font-size:14px}
@@ -156,7 +156,7 @@ table.sc tr.rel td{font-weight:500}
 @media (max-width:760px){
   .edtools{right:0;bottom:auto;width:auto;height:52px;flex-direction:row;overflow-x:auto;overflow-y:hidden;border-right:0;border-bottom:1px solid var(--line);padding:8px}
   .edtools .gl{display:none}
-  .edside{top:auto;left:0;width:auto;height:44%;border-left:0;border-top:1px solid var(--line)}
+  aside.edside{top:auto;left:0;width:auto;height:44%;border-left:0;border-top:1px solid var(--line)}
   #edHint{bottom:calc(44% + 10px)}
 }
 /* Touch & safe areas: phones, tablets, interactive whiteboards */
@@ -193,7 +193,20 @@ button,label,select{touch-action:manipulation}
   #app.editing .hud{display:none}
   .edtools{width:132px}
   .tool{font-size:12px;padding:5px 7px}
-  .edside{width:260px}
+  aside.edside{width:260px}
+}
+/* Menu on phones: compact, with the Play button always in view */
+.menu-go{position:sticky;bottom:-22px;margin-inline:-22px;margin-bottom:-22px;padding:12px 22px 18px;background:var(--panel);border-top:1px solid var(--line)}
+@media (max-width:620px),(max-height:520px){
+  .card{padding:16px}
+  .menu-go{bottom:-16px;margin-inline:-16px;margin-bottom:-16px;padding:10px 16px 14px}
+  #ovMenu .lead{display:none}
+  #ovMenu h1{font-size:30px}
+  #ovMenu .group{margin-top:10px}
+  #ovMenu .seg span{padding:7px 10px}
+  #ovMenu .seg span small{display:none}
+  #ovMenu .seg label{flex-basis:120px}
+  #ovMenu .seg.circ .sw{width:22px;height:22px;grid-row:auto}
 }
 /* Interactive whiteboards and big screens: larger controls */
 @media (min-width:1600px) and (min-height:900px){
@@ -306,12 +319,7 @@ button,label,select{touch-action:manipulation}
           <label><input type="radio" name="ctrl" id="cDrag" value="drag" checked><span><b>Trascina</b><small>Tiri indietro: direzione e forza insieme</small></span></label>
           <label><input type="radio" name="ctrl" id="cMeter" value="meter"><span><b>Indicatore</b><small>Punti, poi fermi la barra che sale e scende</small></span></label>
         </div></div>
-      <div class="group"><div class="lab">Aiuto alla mira</div>
-        <div class="seg">
-          <label><input type="radio" name="guide" id="gNo" value="0" checked><span><b>Mira libera</b><small>Vedi solo direzione e distanza</small></span></label>
-          <label><input type="radio" name="guide" id="gYes" value="1"><span><b>Colpo guidato</b><small>Vedi la traiettoria anche dopo i rimbalzi sulle sponde</small></span></label>
-        </div></div>
-      <div class="row">
+      <div class="row menu-go">
         <button class="btn primary" id="bPlay" type="button">Gioca</button>
         <button class="btn" id="bResume" type="button" hidden>Riprendi</button>
         <button class="btn" id="bEditor" type="button">Editor di buche</button>
@@ -888,7 +896,6 @@ function syncMenu(){
   const ci=$(`#ci_${cfg.circuit}`);if(ci)ci.checked=true;
   $('#o'+cfg.holes).checked=true;$({free:'#oFree',hl:'#oHl',lab:'#oLab'}[cfg.mode]||'#oFree').checked=true;
   $({p1:'#lP1',p2:'#lP2',f5:'#lF5'}[cfg.limit]).checked=true;$(cfg.ctrl==='meter'?'#cMeter':'#cDrag').checked=true;
-  $(cfg.guide?'#gYes':'#gNo').checked=true;
   $('#gLimit').hidden=cfg.mode!=='hl';
   const hs=HOLES(),p9=hs.slice(0,9).reduce((a,h)=>a+h.par,0),p18=hs.reduce((a,h)=>a+h.par,0);
   if(cfg.circuit==='mie'){const n=hs.length;$('#par9').textContent=n?`Le prime ${Math.min(9,n)} · par ${p9}`:'Nessuna buca';$('#par18').textContent=n?`Tutte (${n}) · par ${p18}`:'Nessuna buca'}
