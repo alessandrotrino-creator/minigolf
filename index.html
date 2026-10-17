@@ -81,12 +81,14 @@ button{font:inherit;color:inherit}
 .seg.mini span{padding:6px 10px;font-size:13px;font-weight:700}
 .seg.circ label{flex:1 1 170px}
 .seg.circ span{display:grid;grid-template-columns:38px 1fr;gap:4px 10px;align-items:center}
+.seg.circ .nuovo{font:700 10px "DM Mono",ui-monospace,monospace;font-style:normal;text-transform:uppercase;margin-left:6px;padding:1px 6px;border-radius:999px;background:var(--gold);color:#2b1606;vertical-align:2px}
 .seg.circ .sw{grid-row:span 2;width:38px;height:38px;border-radius:10px;box-shadow:inset 0 0 0 3px rgba(255,255,255,.75),0 2px 0 rgba(0,0,0,.3)}
 
 .overlay{position:absolute;inset:0;display:grid;place-items:center;padding:16px;background:rgba(12,8,22,.62);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px);z-index:5}
 .card{width:min(680px,100%);max-height:100%;overflow:auto;box-sizing:border-box;background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:22px;box-shadow:0 30px 80px rgba(0,0,0,.5)}
 .card h1{font-family:var(--f-display);font-weight:400;font-size:clamp(34px,7vw,52px);line-height:.95;margin:0;color:var(--gold);text-shadow:0 4px 0 var(--gold-deep);text-wrap:balance}
 .card h2{font-family:var(--f-display);font-weight:400;font-size:34px;margin:0 0 6px;color:var(--gold);text-shadow:0 3px 0 var(--gold-deep)}
+.ver{font:700 .42em "DM Mono",ui-monospace,monospace;vertical-align:.55em;padding:2px 7px;border-radius:999px;background:var(--gold);color:#2b1606;letter-spacing:0}
 .card p.lead{color:var(--muted);margin:10px 0 8px;max-width:62ch;line-height:1.45}
 .group{margin-top:14px}
 .group>.lab{font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);font-weight:800;margin-bottom:6px}
@@ -150,6 +152,8 @@ aside.edside{width:310px;z-index:3}
 .mine span{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .mine button{background:transparent;border:1px solid var(--line);border-radius:8px;padding:4px 8px;cursor:pointer;font-size:12px;font-weight:600}
 .mine button.warn{border-color:var(--coral);color:var(--coral)}
+.mine.it button.nm{flex:1;min-width:0;border:0;padding:0;text-align:left;font-size:13px;font-weight:inherit;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.mine.it i{width:12px;height:12px;border-radius:4px;flex:none;box-shadow:inset 0 0 0 1px rgba(0,0,0,.35)}
 #edMsg:empty{display:none}
 #edMsg.err{color:var(--coral)}
 #edHint{position:absolute;left:50%;bottom:12px;transform:translateX(-50%);max-width:min(560px,calc(100% - 32px));padding:7px 14px;border-radius:999px;background:rgba(21,16,34,.88);border:1px solid var(--line);font-size:12.5px;color:var(--text);pointer-events:none;text-align:center;z-index:2}
@@ -170,17 +174,19 @@ button,label,select{touch-action:manipulation}
 /* Phone held sideways: HUD and shot controls move to side rails so the course gets the full height */
 @media (orientation:landscape) and (max-height:520px){
   #app{grid-template-columns:auto minmax(0,1fr) auto;grid-template-rows:minmax(0,1fr)}
-  .hud{grid-column:1;grid-row:1;flex-direction:column;flex-wrap:nowrap;align-items:stretch;gap:6px;width:108px;box-sizing:border-box;padding:8px 8px 8px max(8px,env(safe-area-inset-left));border-bottom:0;border-right:1px solid var(--line);overflow-y:auto}
+  .hud{grid-column:1;grid-row:1;flex-direction:column;flex-wrap:nowrap;align-items:stretch;gap:5px;width:90px;box-sizing:border-box;padding:6px 5px 6px max(5px,env(safe-area-inset-left));border-bottom:0;border-right:1px solid var(--line);overflow-y:auto}
   .hud .logo{display:none}
   .chips{flex-direction:column;flex:0 0 auto;flex-wrap:nowrap;gap:4px}
-  .chip{min-width:0;padding:3px 8px}
-  .chip span{font-size:9px}
-  .chip b{font-size:13px}
-  .chip.big b{font-size:15px}
+  .chip{min-width:0;padding:2px 6px}
+  .chip span{font-size:8.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .chip b{font-size:12.5px}
+  .chip.big b{font-size:14px}
+  .chip.turn b{font-size:12px;max-width:74px}
   .actions{flex-direction:column;gap:4px;margin-top:auto}
-  .ib{padding:7px 8px;font-size:12px;text-align:center}
+  .ib{padding:6px 4px;font-size:11.5px;text-align:center}
   #stage{grid-column:2;grid-row:1}
-  .dock{grid-column:3;grid-row:1;display:flex;flex-direction:column;align-items:stretch;justify-content:center;gap:8px;width:118px;box-sizing:border-box;padding:8px max(8px,env(safe-area-inset-right)) 8px 8px;border-top:0;border-left:1px solid var(--line)}
+  .dock{grid-column:3;grid-row:1;display:flex;flex-direction:column;align-items:stretch;justify-content:center;gap:6px;width:96px;box-sizing:border-box;padding:6px max(5px,env(safe-area-inset-right)) 6px 5px;border-top:0;border-left:1px solid var(--line)}
+  .dock .seg.mini span{padding:6px 4px;font-size:12px}
   .dock .seg.mini{flex-direction:column}
   .dock .seg.mini label{flex:1 1 auto}
   .dock .seg.mini span{text-align:center}
@@ -195,6 +201,29 @@ button,label,select{touch-action:manipulation}
   .tool{font-size:12px;padding:5px 7px}
   aside.edside{width:260px}
 }
+/* More players */
+.pdot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;vertical-align:0;box-shadow:0 0 0 2px rgba(255,255,255,.25);flex:none}
+#ovMenu #plCount label{flex:1 1 0;min-width:0}
+#plBalls{margin-top:8px}
+#ovMenu #plBalls label{flex:1 1 150px}
+#plBalls span{text-align:center}
+#plCount span{text-align:center}
+.pnames{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:6px;margin-top:8px}
+.pn{display:flex;align-items:center;gap:2px;background:var(--raised);border:1px solid var(--line);border-radius:10px;padding:2px 10px}
+.pn:focus-within{border-color:var(--gold)}
+.pn input{flex:1;min-width:0;background:transparent;border:0;color:var(--text);font:inherit;font-weight:600;font-size:14px;padding:7px 0;outline:none}
+.pn input::placeholder{color:var(--muted)}
+.chip.turn b{display:flex;align-items:center;font-family:var(--f-body);font-weight:800;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:130px}
+#banner .pdot{margin-left:2px}
+ol.rank{list-style:none;margin:12px 0 4px;padding:0;display:grid;gap:6px;counter-reset:r}
+ol.rank li{display:grid;grid-template-columns:28px minmax(0,1fr) auto;grid-template-rows:auto auto;column-gap:10px;align-items:center;padding:10px 12px;border-radius:12px;background:var(--raised);counter-increment:r}
+ol.rank li::before{content:counter(r);grid-row:span 2;font-family:var(--f-display);font-size:22px;color:var(--gold)}
+ol.rank li:first-child{box-shadow:inset 0 0 0 1px var(--gold)}
+ol.rank li span{display:flex;align-items:center;font-weight:800;font-size:16px;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+ol.rank li b{grid-row:span 2;font-family:var(--f-mono);font-weight:500;font-size:20px}
+ol.rank li b.u{color:var(--good)} ol.rank li b.o{color:var(--coral)}
+ol.rank li small{color:var(--muted);font-size:12px}
+@media (max-width:620px){#app.multi .chip:has(#hDist){display:none}}
 /* Menu on phones: compact, with the Play button always in view */
 .menu-go{position:sticky;bottom:-22px;margin-inline:-22px;margin-bottom:-22px;padding:12px 22px 18px;background:var(--panel);border-top:1px solid var(--line)}
 @media (max-width:620px),(max-height:520px){
@@ -206,7 +235,8 @@ button,label,select{touch-action:manipulation}
   #ovMenu .seg span{padding:7px 10px}
   #ovMenu .seg span small{display:none}
   #ovMenu .seg label{flex-basis:120px}
-  #ovMenu .seg.circ .sw{width:22px;height:22px;grid-row:auto}
+  #ovMenu .seg.circ .nuovo{font:700 10px "DM Mono",ui-monospace,monospace;font-style:normal;text-transform:uppercase;margin-left:6px;padding:1px 6px;border-radius:999px;background:var(--gold);color:#2b1606;vertical-align:2px}
+.seg.circ .sw{width:22px;height:22px;grid-row:auto}
 }
 /* Interactive whiteboards and big screens: larger controls */
 @media (min-width:1600px) and (min-height:900px){
@@ -237,6 +267,7 @@ button,label,select{touch-action:manipulation}
   <header class="hud">
     <span class="logo">M&amp;P</span>
     <div class="chips">
+      <div class="chip turn" id="turnChip" hidden><span>Turno</span><b id="hTurn"></b></div>
       <div class="chip"><span>Buca</span><b id="hHole">1/9</b></div>
       <div class="chip"><span>Par</span><b id="hPar">2</b></div>
       <div class="chip"><span>Colpi</span><b id="hStrokes">0</b></div>
@@ -272,6 +303,7 @@ button,label,select{touch-action:manipulation}
         <p class="ro" id="edMsg"></p>
       </section>
       <section><div class="lab-t">Oggetto selezionato</div><div id="edProps" style="display:grid;gap:8px"></div></section>
+      <section><div class="lab-t">Oggetti nella buca</div><div id="edItems" style="display:grid;gap:6px"></div></section>
       <section><div class="lab-t">Le mie buche</div><div id="edList" style="display:grid;gap:6px"></div></section>
       <section><div class="lab-t">Sposta su un altro dispositivo</div>
         <p class="ro">Copia il testo delle tue buche e incollalo qui nell’altro dispositivo.</p>
@@ -299,13 +331,27 @@ button,label,select{touch-action:manipulation}
 
   <div class="overlay" id="ovMenu">
     <div class="card">
-      <h1>Mulini &amp; Ponticelli</h1>
-      <p class="lead">Minigolf in cinque circuiti da 18 buche. Le prime nove sono le più facili, le ultime nove le più dure. Rimbalzi, pendenze, ghiaccio e salti seguono la fisica.</p>
+      <h1>Mulini &amp; Ponticelli <span class="ver">2.0</span></h1>
+      <p class="lead">Minigolf in nove circuiti da 18 buche. Le prime nove sono le più facili, le ultime nove le più dure. Rimbalzi, pendenze, terrazze, ghiaccio e salti seguono la fisica.</p>
       <div class="group"><div class="lab">Circuito</div><div class="seg circ" id="circList"></div></div>
       <div class="group"><div class="lab">Percorso</div>
         <div class="seg">
           <label><input type="radio" name="holes" id="o9" value="9" checked><span><b>9 buche</b><small id="par9">Buche 1–9</small></span></label>
           <label><input type="radio" name="holes" id="o18" value="18"><span><b>18 buche</b><small id="par18">Tutte, con le 9 più dure</small></span></label>
+        </div></div>
+      <div class="group"><div class="lab">Giocatori</div>
+        <div class="seg mini" id="plCount" role="radiogroup" aria-label="Numero di giocatori">
+          <label><input type="radio" name="players" value="1" checked><span>1</span></label>
+          <label><input type="radio" name="players" value="2"><span>2</span></label>
+          <label><input type="radio" name="players" value="3"><span>3</span></label>
+          <label><input type="radio" name="players" value="4"><span>4</span></label>
+          <label><input type="radio" name="players" value="5"><span>5</span></label>
+          <label><input type="radio" name="players" value="6"><span>6</span></label>
+        </div>
+        <div class="pnames" id="plNames" hidden></div>
+        <div class="seg mini" id="plBalls" hidden role="radiogroup" aria-label="Palline degli altri giocatori">
+          <label><input type="radio" name="balls" value="real" checked><span>Palline vere: si urtano</span></label>
+          <label><input type="radio" name="balls" value="ghost"><span>Segnaposto: si attraversano</span></label>
         </div></div>
       <div class="group"><div class="lab">Modalità</div>
         <div class="seg">
@@ -374,6 +420,7 @@ button,label,select{touch-action:manipulation}
 const W=1000,H=600,TAU=Math.PI*2,PXM=100;
 let BALL_R=7;const CUP_R=13,WALL_HALF=6;
 const DEC=110,SAND_DEC=430,ICE_DEC=32,VMAX=560,VCAP=230,GZ=800,LAUNCH=0.55,E_WALL=0.72;
+const TH=16; // height of one terrace level
 let MAX_RANGE=VMAX*VMAX/(2*DEC);
 // physics parameters: fixed in Libera/Highlander, editable only in Laboratorio
 const PH={on:false,vmax:VMAX,eK:1,slopeK:1,campo:DEC,ruvido:SAND_DEC,ghiaccio:ICE_DEC,visc:{},shape:'sphere',bm:null,mat:{}};
@@ -405,6 +452,18 @@ const THEMES={
    chasm:['#2b3a2a','#060c06'],chasmMsg:'Nel burrone! +1 colpo',post:'tree',bouncy:'totem',mill:'wheel',mover:'log',block:'straw',deco:'jungle',void:'#0d1912',rail:'#a08550',deck:'#9a7346'},
  deserto:{felt:['#e6a862','#c0773a'],wall:'#f7e6c4',block:'#d9b77e',water:['#45c6d6','#1a7c9e'],rough:'#f6dfa8',speck:'rgba(150,90,30,.3)',quick:'#a77a42',
    chasm:['#5a3220','#160a05'],chasmMsg:'Nel burrone! +1 colpo',post:'cactus',bouncy:'pinball',mill:'wheel',mover:'scorpion',block:'pyramid',deco:'desert',void:'#1e1410',rail:'#7a4f2e',deck:'#b48552'},
+ lunapark:{felt:['#5f6cf0','#3b3fb8'],wall:'#ffe08a',block:'#ff6f61',water:['#5fe0ff','#2486d9'],rough:'#f7b8d6',speck:'rgba(255,255,255,.45)',quick:'#b0559a',quickCore:'rgba(60,15,70,.9)',swirl:'rgba(255,255,255,.4)',
+   chasm:['#2a1646','#07030f'],chasmMsg:'Giù dalla giostra! +1 colpo',post:'post',bouncy:'pinball',mill:'carousel',mover:'car',block:'tent',deco:'park',void:'#1b0f30',rail:'#d8436f',deck:'#ffc65c',cliff:'#b04a8a',
+   waterName:'Fontana',waterMsg:'Nella fontana! +1 colpo',quickName:'Vortice',quickMsg:'Risucchiata dal vortice! +1 colpo'},
+ vulcano:{felt:['#6b5f57','#3e3530'],wall:'#d8c7b4',block:'#3a3433',water:['#ffb838','#d6331a'],rough:'#4b4542',speck:'rgba(0,0,0,.35)',quick:'#a8401a',quickCore:'rgba(255,210,90,.95)',swirl:'rgba(255,225,130,.5)',
+   chasm:['#5a1a08','#140402'],chasmMsg:'Nel cratere! +1 colpo',post:'rock',bouncy:'ember',mill:'wheel',mover:'boulder',block:'basalt',deco:'volcano',void:'#1c0d09',rail:'#4a3226',deck:'#6e5444',cliff:'#2e2522',
+   waterName:'Lava',waterMsg:'Nella lava! +1 colpo',splash:['#ffcf6b','#ff5a1f'],quickName:'Magma',quickMsg:'Inghiottita dal magma! +1 colpo'},
+ spazio:{felt:['#59607a','#30364d'],wall:'#c4cde3',block:'#8a93ad',water:['#8ef0ff','#4a5df0'],rough:'#8b91a6',speck:'rgba(10,14,30,.4)',quick:'#3a1f6e',quickCore:'rgba(0,0,0,.98)',swirl:'rgba(190,150,255,.6)',
+   chasm:['#0b0b22','#000000'],chasmMsg:'Persa nello spazio! +1 colpo',post:'rock',bouncy:'planet',mill:'satellite',mover:'ufo',block:'station',deco:'space',void:'#05060f',rail:'#7a86a8',deck:'#9aa6c4',cliff:'#3a3f55',gz:420,
+   waterName:'Plasma',waterMsg:'Nel plasma! +1 colpo',splash:['#c8f6ff','#9a8cff'],quickName:'Buco nero',quickMsg:'Risucchiata dal buco nero! +1 colpo'},
+ castello:{felt:['#4fae5c','#2b7a3c'],wall:'#cfc8d8',block:'#a39cb5',water:['#4a9ccc','#1d4f80'],rough:'#d9cfbd',speck:'rgba(90,80,60,.3)',quick:'#6f6a45',quickCore:'rgba(30,35,15,.9)',swirl:'rgba(20,30,10,.4)',
+   chasm:['#2a2438','#08060e'],chasmMsg:'Nelle segrete! +1 colpo',post:'tower',bouncy:'shield',mill:'windmill',mover:'gate',block:'keep',deco:'castle',void:'#141021',rail:'#6b4a33',deck:'#a87a50',cliff:'#8a8298',
+   waterName:'Fossato',waterMsg:'Nel fossato! +1 colpo',quickName:'Palude',quickMsg:'Nella palude! +1 colpo'},
 };
 
 // ---------- circuits: 5 × 18 holes, back nine harder ----------
@@ -508,18 +567,104 @@ const DESERTO=[
  {name:'Dune Infinite',par:3,tee:[100,300],cup:[840,300],areas:[R(60,60,880,480)],hills:[{x:250,y:200,r:100,s:150},{x:250,y:420,r:90,s:150},{x:450,y:300,r:110,s:160},{x:650,y:180,r:100,s:150},{x:650,y:430,r:100,s:150},{x:840,y:300,r:70,s:-90}],quick:[{x:450,y:110,r:40}]},
  {name:'Grande Piramide',par:4,tee:[100,480],cup:[800,300],areas:[R(40,60,920,480)],lines:[{pts:[[575,275],[740,110],[930,300],[740,490],[575,325]],style:'stone'}],movers:[{cx:530,cy:300,w:30,h:30,ax:0,ay:60,period:2,phase:0}],tunnels:[{a:[100,100],b:[700,400],out:0}],quick:[{x:380,y:300,r:55}],bumpers:[{x:250,y:380,r:14},{x:250,y:200,r:14}]},
 ];
+// ---------- circuits 2.0: terraces (raised floors) and stairs, harder from the first hole ----------
+const BOUNCY=a=>a.map(b=>({...b,bouncy:1}));
+const LUNAPARK=[
+ {name:'La Biglietteria',par:3,tee:[150,380],cup:[850,240],areas:[R(80,160,840,280)],terraces:[{x:400,y:160,w:220,h:280}],stairs:[{x:330,y:330,w:70,h:100,dir:'+x'}],blocks:[{poly:R(470,260,80,80)}],sand:[R(690,170,60,130)],bumpers:[{x:740,y:380,r:16,bouncy:1},{x:510,y:380,r:13}]},
+ {name:'Autoscontri',par:3,tee:[140,300],cup:[855,300],areas:[R(80,100,840,400)],terraces:[{x:800,y:230,w:120,h:140}],stairs:[{x:740,y:320,w:60,h:50,dir:'+x'}],movers:[{cx:330,cy:300,w:50,h:36,ax:0,ay:150,period:2.6,phase:0},{cx:480,cy:300,w:50,h:36,ax:0,ay:-150,period:3.1,phase:1},{cx:630,cy:300,w:50,h:36,ax:0,ay:150,period:2.2,phase:2}],bumpers:BOUNCY([{x:220,y:170,r:16},{x:220,y:430,r:16},{x:720,y:160,r:16},{x:720,y:440,r:16}])},
+ {name:'Zucchero Filato',par:3,tee:[150,140],cup:[850,420],areas:[[[80,80],[560,80],[560,300],[920,300],[920,520],[80,520]]],terraces:[{x:80,y:80,w:280,h:140}],sand:[ell(330,330,90,55),ell(560,450,70,45)],quick:[{x:700,y:400,r:42}],bumpers:[{x:450,y:200,r:16,bouncy:1},{x:760,y:470,r:13}]},
+ {name:'La Giostra',par:3,tee:[150,300],cup:[850,300],areas:[R(80,100,840,400)],mills:[{x:500,y:300,len:120,hub:22,n:8,speed:1.1}],blocks:[{poly:R(450,100,100,70)},{poly:R(450,430,100,70)}],hills:[{x:850,y:300,r:60,s:-70}],bumpers:[...ring(850,300,75,4,12,Math.PI/4),{x:300,y:180,r:16,bouncy:1},{x:300,y:420,r:16,bouncy:1}]},
+ {name:'Montagne Russe',par:4,tee:[120,460],cup:[870,200],areas:[R(60,80,880,440)],terraces:[{x:260,y:300,w:300,h:220,lv:1},{x:380,y:80,w:180,h:220,lv:2}],stairs:[{x:200,y:400,w:60,h:100,dir:'+x'},{x:420,y:300,w:100,h:70,dir:'-y'}],ramps:[{x:490,y:120,w:70,h:120,dir:'+x',acc:150,jump:true}],chasm:[R(600,80,80,220)],bumpers:BOUNCY([{x:800,y:130,r:16},{x:780,y:420,r:18}])},
+ {name:'Le Tazze',par:3,tee:[120,300],cup:[880,300],areas:[[[140,80],[860,80],[940,160],[940,440],[860,520],[140,520],[60,440],[60,160]]],mills:[{x:330,y:190,len:70,hub:12,n:3,speed:1.6},{x:330,y:410,len:70,hub:12,n:3,speed:-1.9},{x:520,y:300,len:80,hub:14,n:3,speed:1.3},{x:710,y:190,len:70,hub:12,n:3,speed:-1.5},{x:710,y:410,len:70,hub:12,n:3,speed:2}],quick:[{x:520,y:120,r:38},{x:520,y:480,r:38}],bumpers:[{x:820,y:230,r:12},{x:820,y:370,r:12}]},
+ {name:'Il Flipper',par:3,tee:[500,500],cup:[500,110],areas:[R(80,60,840,480)],slopes:[{poly:R(80,60,840,480),ax:0,ay:45}],lines:[{pts:[[250,460],[420,500]]},{pts:[[750,460],[580,500]]}],bumpers:BOUNCY([{x:350,y:330,r:20},{x:500,y:270,r:20},{x:650,y:330,r:20},{x:410,y:180,r:18},{x:590,y:180,r:18}])},
+ {name:'Tunnel dell’Amore',par:3,tee:[140,300],cup:[840,400],areas:[R(80,120,320,360),R(600,120,320,360)],tunnels:[{a:[380,180],b:[625,180],out:0},{a:[380,420],b:[625,420],out:0}],terraces:[{x:600,y:120,w:320,h:150}],water:[ell(760,335,55,30)],blocks:[{poly:R(700,390,50,60)}],movers:[{cx:340,cy:300,w:30,h:110,ax:0,ay:120,period:3,phase:0}]},
+ {name:'Ruota Panoramica',par:3,tee:[120,300],cup:[860,300],areas:[R(60,60,880,480)],mills:[{x:450,y:300,len:150,hub:28,n:6,speed:.8}],blocks:[{poly:R(250,60,90,110)},{poly:R(250,430,90,110)}],terraces:[{x:760,y:200,w:180,h:200}],stairs:[{x:700,y:250,w:60,h:100,dir:'+x'}],bumpers:BOUNCY([{x:860,y:140,r:16},{x:860,y:460,r:16}])},
+ {name:'Casa degli Specchi',par:4,tee:[120,120],cup:[880,480],areas:[R(60,60,880,480)],lines:[{pts:[[240,60],[240,400]]},{pts:[[420,200],[420,540]]},{pts:[[600,60],[600,400]]},{pts:[[780,200],[780,540]]}],bumpers:BOUNCY([{x:330,y:470,r:18},{x:510,y:130,r:18},{x:690,y:470,r:18}]),quick:[{x:330,y:150,r:36}],sand:[R(560,440,80,90)],slopes:[{poly:R(780,60,160,480),ax:0,ay:50}]},
+ {name:'Il Treno Fantasma',par:4,tee:[130,300],cup:[860,300],areas:[R(60,80,880,440)],chasm:[R(300,80,80,440),R(620,80,80,440)],bridges:[{x:290,y:260,w:100,h:80},{x:610,y:110,w:100,h:70},{x:610,y:420,w:100,h:70}],movers:[{cx:340,cy:300,w:22,h:22,ax:0,ay:24,period:1.8,phase:0}],bumpers:[{x:500,y:200,r:18,bouncy:1},{x:500,y:400,r:18,bouncy:1},...ring(860,300,60,5,11)]},
+ {name:'Montagne Russe Mega',par:4,tee:[100,480],cup:[880,450],areas:[R(40,60,920,480)],terraces:[{x:230,y:230,w:320,h:310,lv:1},{x:400,y:60,w:250,h:170,lv:2}],stairs:[{x:160,y:400,w:70,h:120,dir:'+x'},{x:450,y:230,w:100,h:70,dir:'-y'}],ramps:[{x:590,y:90,w:60,h:110,dir:'+x',acc:150,jump:true}],water:[R(650,60,110,250)],quick:[{x:700,y:480,r:40}],bumpers:BOUNCY([{x:850,y:160,r:18},{x:800,y:330,r:18}])},
+ {name:'Lancio degli Anelli',par:3,tee:[130,300],cup:[750,300],areas:[R(60,120,880,360)],ramps:[{x:480,y:250,w:90,h:100,dir:'+x',acc:150,jump:true}],terraces:[{x:640,y:190,w:220,h:220}],stairs:[{x:860,y:260,w:60,h:80,dir:'-x'}],blocks:[{poly:R(300,120,60,90)},{poly:R(300,390,60,90)}],bumpers:ring(750,300,60,6,10)},
+ {name:'Autoscontri Pazzi',par:4,tee:[120,120],cup:[520,300],areas:[R(60,60,880,480)],terraces:[{x:420,y:220,w:160,h:160}],stairs:[{x:360,y:270,w:60,h:60,dir:'+x'}],movers:[{cx:280,cy:300,w:40,h:56,ax:0,ay:180,period:3,phase:0},{cx:500,cy:140,w:56,h:40,ax:220,ay:0,period:3.4,phase:1},{cx:500,cy:460,w:56,h:40,ax:-220,ay:0,period:2.8,phase:2},{cx:720,cy:300,w:40,h:56,ax:0,ay:-180,period:2.6,phase:.5}],bumpers:BOUNCY([{x:560,y:240,r:10},{x:560,y:360,r:10}])},
+ {name:'Lo Scivolo',par:4,tee:[130,130],cup:[860,450],areas:[R(60,60,880,480)],terraces:[{x:60,y:60,w:240,h:180,lv:2},{x:60,y:60,w:520,h:300,lv:1}],stairs:[{x:300,y:120,w:80,h:70,dir:'-x'}],slopes:[{poly:R(420,120,80,70),ax:450,ay:0,pad:1}],ramps:[{x:500,y:110,w:80,h:100,dir:'+x',acc:150,jump:true}],water:[R(600,60,120,300)],quick:[{x:820,y:230,r:45}],bumpers:BOUNCY([{x:760,y:470,r:16},{x:400,y:450,r:16}])},
+ {name:'Tiro al Bersaglio',par:5,tee:[120,300],cup:[500,300],areas:[R(60,80,880,440)],terraces:[{x:300,y:110,w:400,h:380,lv:1},{x:420,y:210,w:160,h:180,lv:2}],stairs:[{x:240,y:260,w:60,h:80,dir:'+x'},{x:580,y:260,w:60,h:80,dir:'-x'}],bumpers:[{x:820,y:300,r:18,bouncy:1},{x:180,y:150,r:16,bouncy:1},{x:180,y:450,r:16,bouncy:1}]},
+ {name:'Il Vortice',par:4,tee:[120,300],cup:[870,280],areas:[R(60,80,880,440)],quick:[{x:300,y:190,r:42},{x:300,y:410,r:42},{x:500,y:300,r:42},{x:700,y:190,r:42},{x:700,y:410,r:42}],slopes:[{poly:R(160,270,60,60),ax:420,ay:0,pad:1}],bumpers:BOUNCY([{x:400,y:300,r:16},{x:600,y:300,r:16}]),terraces:[{x:790,y:200,w:150,h:200}],stairs:[{x:830,y:400,w:70,h:60,dir:'-y'}]},
+ {name:'Gran Finale',par:5,tee:[110,110],cup:[870,450],areas:[R(40,40,920,520)],terraces:[{x:40,y:40,w:200,h:160,lv:2},{x:40,y:40,w:420,h:260,lv:1},{x:770,y:300,w:190,h:260,lv:1}],stairs:[{x:820,y:240,w:90,h:60,dir:'+y'}],mills:[{x:300,y:440,len:100,hub:16,n:6,speed:1.3}],movers:[{cx:540,cy:420,w:40,h:56,ax:0,ay:100,period:2.6,phase:0}],ramps:[{x:590,y:380,w:80,h:110,dir:'+x',acc:150,jump:true}],water:[R(680,300,90,260)],bumpers:[...ring(870,450,55,5,10,.3),{x:620,y:120,r:18,bouncy:1},{x:860,y:120,r:18,bouncy:1}]},
+];
+const VULCANO=[
+ {name:'Sentiero di Cenere',par:3,tee:[150,250],cup:[840,200],areas:[[[80,180],[480,180],[480,100],[920,100],[920,300],[600,300],[600,500],[80,500]]],water:[R(330,180,70,320)],bridges:[{x:320,y:390,w:90,h:70}],sand:[R(640,110,90,180)],bumpers:[{x:520,y:250,r:14},{x:780,y:150,r:14}]},
+ {name:'La Colata',par:3,tee:[140,300],cup:[860,300],areas:[R(80,100,840,400)],terraces:[{x:80,y:200,w:150,h:200}],slopes:[{poly:R(300,100,400,340),ax:0,ay:55}],water:[R(300,440,400,60)],bumpers:[{x:450,y:230,r:16},{x:600,y:330,r:16},{x:380,y:170,r:16,bouncy:1}]},
+ {name:'Il Cratere',par:3,tee:[150,430],cup:[500,300],areas:[R(80,80,840,440)],terraces:[{x:380,y:120,w:240,h:40},{x:380,y:440,w:240,h:40},{x:380,y:160,w:40,h:280},{x:580,y:160,w:40,h:280}],stairs:[{x:320,y:260,w:60,h:80,dir:'+x'}],hills:[{x:500,y:300,r:70,s:-90}],quick:[{x:460,y:200,r:28},{x:545,y:400,r:28}],bumpers:[{x:250,y:180,r:16},{x:250,y:420,r:16},{x:760,y:300,r:18,bouncy:1}]},
+ {name:'Fiumi di Lava',par:3,tee:[140,300],cup:[850,380],areas:[R(80,140,840,320)],water:[R(320,140,80,320),R(600,140,80,320)],ramps:[{x:230,y:240,w:80,h:120,dir:'+x',acc:150,jump:true}],bridges:[{x:590,y:150,w:100,h:70}],movers:[{cx:760,cy:300,w:40,h:40,ax:0,ay:110,period:2.8,phase:0}],bumpers:[{x:500,y:380,r:14}]},
+ {name:'Terrazze di Basalto',par:4,tee:[120,300],cup:[860,300],areas:[R(60,80,880,440)],terraces:[{x:260,y:80,w:500,h:440,lv:1},{x:400,y:80,w:220,h:440,lv:2}],stairs:[{x:200,y:380,w:60,h:100,dir:'+x'},{x:340,y:120,w:60,h:100,dir:'+x'}],blocks:[{poly:R(480,230,60,140)}],quick:[{x:820,y:440,r:40}],bumpers:[{x:690,y:300,r:16,bouncy:1}]},
+ {name:'Il Geyser',par:3,tee:[150,300],cup:[855,300],areas:[R(80,100,840,400)],slopes:[{poly:R(240,270,60,60),ax:420,ay:0,pad:1}],bumpers:BOUNCY([{x:420,y:220,r:18},{x:420,y:380,r:18},{x:520,y:300,r:18}]),water:[ell(680,300,70,110)]},
+ {name:'Massi Rotolanti',par:3,tee:[120,300],cup:[880,300],areas:[R(60,180,880,240)],slopes:[{poly:R(60,180,500,240),ax:-35,ay:0}],terraces:[{x:560,y:180,w:380,h:240}],stairs:[{x:500,y:260,w:60,h:80,dir:'+x'}],movers:[{cx:300,cy:300,w:44,h:44,ax:0,ay:90,period:2.4,phase:0},{cx:420,cy:300,w:44,h:44,ax:0,ay:-90,period:2,phase:1},{cx:740,cy:300,w:44,h:44,ax:0,ay:90,period:2.6,phase:2}]},
+ {name:'Tubi di Lava',par:3,tee:[150,300],cup:[820,300],areas:[R(60,60,880,480)],water:[R(60,60,880,480)],islands:[ell(170,300,100,150),R(380,100,220,120),R(380,380,220,120),ell(810,300,130,190)],tunnels:[{a:[240,230],b:[400,160],out:0},{a:[240,370],b:[400,440],out:0}],bridges:[{x:590,y:190,w:180,h:60}],ramps:[{x:520,y:390,w:80,h:80,dir:'+x',acc:150,jump:true}],bumpers:[{x:820,y:230,r:12},{x:760,y:360,r:12}]},
+ {name:'Bocca del Vulcano',par:4,tee:[150,520],cup:[500,300],areas:[R(60,60,880,520)],terraces:[{x:220,y:100,w:560,h:400,lv:1},{x:390,y:200,w:220,h:200,lv:2}],stairs:[{x:270,y:500,w:100,h:50,dir:'-y'},{x:450,y:400,w:100,h:50,dir:'-y'}],hills:[{x:500,y:300,r:60,s:-90}],water:[R(220,260,70,80),R(710,260,70,80)],bumpers:[{x:160,y:200,r:16},{x:840,y:200,r:16}]},
+ {name:'Ponti Sospesi',par:5,tee:[130,120],cup:[860,460],areas:[R(60,60,880,480)],chasm:[R(240,60,70,480),R(470,60,70,480),R(700,60,70,480)],bridges:[{x:230,y:250,w:90,h:64,acc:-80},{x:460,y:120,w:90,h:64,acc:-80},{x:690,y:330,w:90,h:64,acc:100}],movers:[{cx:390,cy:300,w:40,h:40,ax:0,ay:150,period:3.2,phase:0},{cx:620,cy:300,w:40,h:40,ax:0,ay:-150,period:2.8,phase:1}]},
+ {name:'Pioggia di Lapilli',par:4,tee:[150,140],cup:[860,300],areas:[R(60,60,880,480)],terraces:[{x:60,y:60,w:300,h:200}],bumpers:[...BOUNCY([{x:450,y:150,r:16},{x:400,y:320,r:16},{x:560,y:440,r:16},{x:640,y:180,r:16},{x:720,y:330,r:16}]),{x:800,y:250,r:12},{x:800,y:350,r:12}],quick:[{x:540,y:290,r:60}],water:[ell(700,470,60,40),ell(840,140,50,40)]},
+ {name:'Il Fiume di Fuoco',par:4,tee:[120,120],cup:[860,460],areas:[R(40,60,920,480)],water:[R(320,60,80,400),R(620,140,80,400)],ramps:[{x:230,y:240,w:80,h:100,dir:'+x',acc:150,jump:true},{x:530,y:300,w:80,h:100,dir:'+x',acc:150,jump:true}],movers:[{cx:360,cy:500,w:40,h:40,ax:50,ay:0,period:2.5,phase:0},{cx:660,cy:100,w:40,h:40,ax:50,ay:0,period:2.2,phase:1}],sand:[R(420,60,90,80)]},
+ {name:'Isole di Ossidiana',par:3,tee:[110,300],cup:[860,200],areas:[R(60,100,880,400)],water:[R(60,100,880,400)],islands:[R(60,100,200,400),R(360,180,280,240),R(740,150,200,300)],ramps:[{x:180,y:250,w:80,h:100,dir:'+x',acc:150,jump:true},{x:560,y:250,w:80,h:100,dir:'+x',acc:150,jump:true}],bumpers:[{x:800,y:220,r:12},{x:800,y:380,r:12},{x:460,y:220,r:12}]},
+ {name:'Il Camino',par:3,tee:[500,520],cup:[500,100],areas:[R(380,40,240,520)],terraces:[{x:380,y:40,w:240,h:360,lv:1},{x:380,y:40,w:240,h:180,lv:2}],stairs:[{x:400,y:400,w:90,h:60,dir:'-y'},{x:520,y:220,w:90,h:60,dir:'-y'}],movers:[{cx:500,cy:330,w:40,h:40,ax:70,ay:0,period:2.2,phase:0},{cx:500,cy:150,w:40,h:40,ax:70,ay:0,period:1.9,phase:1}],water:[R(380,480,50,80),R(570,480,50,80)]},
+ {name:'Il Lago di Lava',par:3,tee:[110,300],cup:[880,300],areas:[R(40,60,920,480)],water:[ell(500,300,300,200)],bridges:[{x:190,y:270,w:620,h:60}],movers:[{cx:500,cy:300,w:36,h:36,ax:230,ay:0,period:4,phase:0}],sand:[R(420,60,160,40),R(420,500,160,40)]},
+ {name:'Le Gallerie',par:4,tee:[120,460],cup:[860,450],areas:[R(60,60,880,480)],terraces:[{x:60,y:60,w:880,h:160}],stairs:[{x:180,y:220,w:100,h:60,dir:'-y'}],water:[R(560,220,80,320)],tunnels:[{a:[480,480],b:[720,300],out:Math.PI/2}],blocks:[{poly:R(400,90,40,90)}],bumpers:[{x:700,y:140,r:16,bouncy:1}],movers:[{cx:560,cy:140,w:40,h:40,ax:0,ay:50,period:2,phase:0}],quick:[{x:760,y:480,r:40}]},
+ {name:'La Frana',par:4,tee:[150,300],cup:[860,150],areas:[R(60,60,880,480)],terraces:[{x:60,y:60,w:260,h:480,lv:2},{x:60,y:60,w:560,h:480,lv:1}],slopes:[{poly:R(320,60,620,480),ax:0,ay:50}],water:[R(320,470,300,70),R(620,470,320,70)],movers:[{cx:470,cy:250,w:44,h:44,ax:0,ay:130,period:2.8,phase:0},{cx:760,cy:280,w:44,h:44,ax:0,ay:-120,period:2.4,phase:1}],bumpers:[{x:820,y:220,r:12}]},
+ {name:'Il Cuore del Vulcano',par:4,tee:[100,480],cup:[500,300],areas:[R(40,40,920,520)],terraces:[{x:300,y:140,w:400,h:50},{x:300,y:410,w:400,h:50},{x:300,y:190,w:50,h:220},{x:650,y:190,w:50,h:220}],water:[R(350,190,300,220)],islands:[ell(500,300,80,60)],ramps:[{x:300,y:260,w:50,h:80,dir:'+x',acc:150,jump:true}],stairs:[{x:240,y:260,w:60,h:80,dir:'+x'},{x:700,y:270,w:60,h:60,dir:'-x'}],bridges:[{x:575,y:280,w:75,h:40}],tunnels:[{a:[880,500],b:[440,300],out:0}],quick:[{x:800,y:470,r:45}],movers:[{cx:860,cy:400,w:44,h:44,ax:60,ay:0,period:2.4,phase:0}],bumpers:BOUNCY([{x:180,y:150,r:16},{x:180,y:450,r:16},{x:850,y:150,r:16}])},
+];
+const SPAZIO=[
+ {name:'Allunaggio',par:3,tee:[150,300],cup:[855,300],areas:[R(80,140,840,320)],hills:[{x:350,y:300,r:90,s:-100},{x:600,y:220,r:70,s:-90},{x:600,y:390,r:60,s:-90}],blocks:[{poly:R(470,260,60,80)}],bumpers:BOUNCY([{x:740,y:220,r:18},{x:740,y:380,r:18}])},
+ {name:'Il Modulo',par:3,tee:[240,140],cup:[860,450],areas:[[[80,80],[400,80],[400,380],[920,380],[920,520],[80,520]]],ice:[R(90,260,300,110)],movers:[{cx:560,cy:450,w:16,h:90,ax:0,ay:45,period:3,phase:0,style:'gate'}],quick:[{x:330,y:470,r:36}],bumpers:[{x:700,y:450,r:14,bouncy:1}]},
+ {name:'Gravità Zero',par:3,tee:[130,300],cup:[820,380],areas:[R(60,180,880,240)],chasm:[R(340,180,260,240)],blocks:[{poly:R(700,320,40,100)}],ramps:[{x:250,y:236,w:90,h:128,dir:'+x',acc:150,jump:true}],movers:[{cx:720,cy:300,w:50,h:30,ax:0,ay:80,period:2.6,phase:0}]},
+ {name:'Satelliti',par:3,tee:[130,300],cup:[870,300],areas:[R(60,120,880,360)],mills:[{x:360,y:300,len:110,hub:14,n:2,speed:1.2},{x:640,y:300,len:110,hub:14,n:2,speed:-1}],blocks:[{poly:R(330,120,60,60)},{poly:R(330,420,60,60)},{poly:R(610,120,60,60)},{poly:R(610,420,60,60)}],quick:[{x:500,y:300,r:40}]},
+ {name:'Base su Due Piani',par:3,tee:[130,400],cup:[850,150],areas:[R(60,80,880,440)],terraces:[{x:360,y:80,w:580,h:220}],stairs:[{x:600,y:300,w:100,h:60,dir:'-y'}],blocks:[{poly:R(500,120,60,120)}],quick:[{x:800,y:420,r:55}],bumpers:[{x:720,y:140,r:16,bouncy:1}]},
+ {name:'Pioggia di Meteore',par:3,tee:[120,300],cup:[860,300],areas:[ell(500,300,440,260,40)],bumpers:[{x:300,y:200,r:16},{x:300,y:400,r:16},{x:420,y:300,r:18},{x:540,y:180,r:14},{x:540,y:420,r:14},{x:660,y:300,r:18},{x:760,y:200,r:14},{x:760,y:400,r:14}],movers:[{cx:600,cy:300,w:44,h:28,ax:0,ay:150,period:3,phase:0}]},
+ {name:'Il Buco Nero',par:3,tee:[130,400],cup:[870,200],areas:[R(60,120,880,360)],quick:[{x:500,y:300,r:95}],blocks:[{poly:R(480,120,40,90)},{poly:R(480,390,40,90)},{poly:R(700,240,40,120)}],bumpers:BOUNCY([{x:300,y:200,r:18},{x:300,y:400,r:18},{x:700,y:200,r:18},{x:700,y:400,r:18}])},
+ {name:'Teletrasporto',par:3,tee:[130,300],cup:[860,300],areas:[R(60,200,240,200),R(380,60,240,200),R(380,340,240,200),R(700,200,240,200)],tunnels:[{a:[280,240],b:[400,160],out:0},{a:[280,360],b:[400,440],out:0},{a:[600,110],b:[720,240],out:0},{a:[600,400],b:[720,360],out:0},{a:[600,490],b:[100,380],out:Math.PI}],movers:[{cx:500,cy:160,w:40,h:24,ax:0,ay:70,period:2,phase:0}],quick:[{x:790,y:350,r:28}]},
+ {name:'Stazione Orbitale',par:3,tee:[130,300],cup:[870,300],areas:[R(60,60,880,480)],blocks:[{poly:R(330,200,340,200)}],terraces:[{x:330,y:60,w:340,h:140}],stairs:[{x:270,y:90,w:60,h:80,dir:'+x'}],mills:[{x:500,y:130,len:60,hub:10,n:2,speed:1.4}],movers:[{cx:500,cy:470,w:50,h:30,ax:120,ay:0,period:2.6,phase:0}],quick:[{x:600,y:500,r:32}]},
+ {name:'Crateri a Catena',par:3,tee:[110,300],cup:[890,180],areas:[R(40,80,920,440)],hills:[{x:260,y:300,r:120,s:140},{x:260,y:300,r:36,s:-130},{x:520,y:200,r:100,s:-110},{x:520,y:420,r:90,s:130},{x:760,y:300,r:100,s:-90}],ice:[R(600,90,150,90)],blocks:[{poly:R(640,380,50,100)}],bumpers:[{x:880,y:400,r:16,bouncy:1}]},
+ {name:'Il Grande Balzo',par:3,tee:[100,300],cup:[850,180],areas:[R(40,100,920,400)],blocks:[{poly:R(700,150,40,100)}],terraces:[{x:40,y:100,w:300,h:400},{x:640,y:100,w:320,h:400}],chasm:[R(340,100,300,400)],ramps:[{x:250,y:250,w:90,h:100,dir:'+x',acc:150,jump:true}],bridges:[{x:330,y:440,w:310,h:50}],stairs:[{x:580,y:440,w:60,h:50,dir:'+x'}],bumpers:BOUNCY([{x:760,y:200,r:16},{x:760,y:400,r:16}])},
+ {name:'Labirinto Spaziale',par:4,tee:[130,480],cup:[860,120],areas:[R(60,60,880,480)],lines:[{pts:[[260,60],[260,420]]},{pts:[[460,180],[460,540]]},{pts:[[660,60],[660,420]]}],movers:[{cx:260,cy:480,w:16,h:60,ax:0,ay:30,period:2.4,phase:0,style:'gate'},{cx:460,cy:120,w:16,h:60,ax:0,ay:30,period:2,phase:1,style:'gate'},{cx:660,cy:480,w:16,h:60,ax:0,ay:30,period:2.8,phase:2,style:'gate'}],quick:[{x:360,y:300,r:40},{x:560,y:300,r:40}],tunnels:[{a:[160,120],b:[560,470],out:0}],ice:[R(680,260,250,270)]},
+ {name:'Anelli di Saturno',par:4,tee:[130,300],cup:[500,280],areas:[R(60,60,880,480)],terraces:[{x:420,y:220,w:160,h:160}],stairs:[{x:470,y:380,w:60,h:60,dir:'-y'}],bumpers:BOUNCY(ring(500,300,175,8,16,Math.PI/8))},
+ {name:'Tempesta Solare',par:4,tee:[120,300],cup:[880,420],areas:[R(60,80,880,440)],slopes:[{poly:R(200,80,140,440),ax:0,ay:140,cur:1},{poly:R(500,80,140,440),ax:0,ay:-140,cur:1}],terraces:[{x:440,y:80,w:260,h:440}],stairs:[{x:380,y:260,w:60,h:80,dir:'+x'}],quick:[{x:800,y:150,r:50}],bumpers:[{x:820,y:330,r:14,bouncy:1}]},
+ {name:'La Base Lunare',par:4,tee:[150,450],cup:[860,130],areas:[R(40,40,920,520)],lines:[{pts:[[340,40],[340,250]]},{pts:[[340,350],[340,560]]},{pts:[[660,40],[660,250]]},{pts:[[660,350],[660,560]]}],movers:[{cx:340,cy:300,w:14,h:70,ax:0,ay:45,period:2.8,phase:0,style:'gate'},{cx:660,cy:300,w:14,h:70,ax:0,ay:45,period:2.4,phase:1.5,style:'gate'}],mills:[{x:500,y:300,len:80,hub:12,n:4,speed:1.1}],terraces:[{x:760,y:40,w:200,h:200}],stairs:[{x:800,y:240,w:100,h:60,dir:'-y'}],quick:[{x:850,y:450,r:45}],ice:[R(60,60,260,150)],blocks:[{poly:R(180,300,60,60)}]},
+ {name:'Ghiaccio di Cometa',par:4,tee:[120,140],cup:[860,460],areas:[R(40,60,920,480)],ice:[R(40,60,920,480)],terraces:[{x:40,y:60,w:460,h:240}],quick:[{x:900,y:110,r:45},{x:520,y:490,r:45}],sand:[R(760,380,200,160)],blocks:[{poly:R(600,180,60,160)}],bumpers:[{x:300,y:420,r:16},{x:700,y:440,r:14}]},
+ {name:'Il Wormhole',par:4,tee:[120,480],cup:[870,170],areas:[R(40,60,280,480),R(360,60,280,480),R(680,60,280,480)],tunnels:[{a:[290,120],b:[390,120],out:0},{a:[290,500],b:[710,500],out:0},{a:[610,300],b:[710,120],out:0},{a:[610,500],b:[70,90],out:Math.PI/2}],movers:[{cx:180,cy:300,w:50,h:30,ax:90,ay:0,period:2.4,phase:0}],ice:[R(60,200,240,200)],mills:[{x:500,y:220,len:70,hub:10,n:2,speed:1.5}],quick:[{x:500,y:420,r:40},{x:800,y:490,r:40}],terraces:[{x:780,y:60,w:180,h:240}],stairs:[{x:820,y:300,w:100,h:60,dir:'-y'}]},
+ {name:'Missione Finale',par:5,tee:[120,120],cup:[870,130],areas:[R(40,40,920,520)],terraces:[{x:40,y:40,w:200,h:200,lv:2},{x:40,y:40,w:380,h:520,lv:1},{x:780,y:40,w:180,h:200,lv:1}],chasm:[R(420,40,160,520)],ramps:[{x:330,y:250,w:90,h:100,dir:'+x',acc:150,jump:true}],bridges:[{x:410,y:480,w:180,h:60}],mills:[{x:700,y:330,len:90,hub:12,n:3,speed:1.2}],movers:[{cx:850,cy:420,w:50,h:30,ax:80,ay:0,period:2.4,phase:0}],stairs:[{x:820,y:240,w:100,h:60,dir:'-y'}],quick:[{x:700,y:140,r:45}]},
+];
+const CASTELLO=[
+ {name:'Il Ponte Levatoio',par:3,tee:[150,300],cup:[850,180],areas:[R(60,100,880,400)],water:[R(380,100,80,400)],bridges:[{x:370,y:265,w:100,h:70}],lines:[{pts:[[560,100],[560,260]],style:'castle'},{pts:[[560,340],[560,500]],style:'castle'}],movers:[{cx:560,cy:300,w:16,h:80,ax:0,ay:60,period:3,phase:0}],bumpers:[{x:560,y:250,r:14,style:'tower'},{x:560,y:350,r:14,style:'tower'},{x:750,y:180,r:12,style:'tree'},{x:750,y:420,r:12,style:'tree'}]},
+ {name:'La Scalinata',par:3,tee:[130,380],cup:[820,380],areas:[R(60,120,880,360)],terraces:[{x:380,y:120,w:560,h:360,lv:1},{x:660,y:120,w:280,h:360,lv:2}],stairs:[{x:310,y:250,w:70,h:100,dir:'+x'},{x:590,y:170,w:70,h:80,dir:'+x'}],bumpers:[{x:500,y:420,r:14},{x:800,y:220,r:16,bouncy:1}]},
+ {name:'Il Giardino del Re',par:3,tee:[120,500],cup:[880,100],areas:[R(60,60,880,480)],water:[ell(500,300,70,70)],lines:[{pts:[[200,60],[200,380]],style:'hedge'},{pts:[[800,220],[800,540]],style:'hedge'},{pts:[[350,160],[650,160]],style:'hedge'},{pts:[[350,440],[650,440]],style:'hedge'}],bumpers:[{x:350,y:300,r:14,style:'tree'},{x:650,y:300,r:14,style:'tree'}]},
+ {name:'Le Due Torri',par:3,tee:[140,300],cup:[860,300],areas:[R(60,120,880,360)],terraces:[{x:60,y:120,w:200,h:360}],blocks:[{poly:R(420,120,90,130)},{poly:R(420,350,90,130)}],mills:[{x:465,y:300,len:85,hub:12,n:4,speed:1.5}],movers:[{cx:700,cy:300,w:16,h:100,ax:0,ay:110,period:2.6,phase:0}],bumpers:BOUNCY([{x:600,y:170,r:14},{x:600,y:430,r:14}])},
+ {name:'Il Fossato',par:4,tee:[110,300],cup:[670,300],areas:[R(40,60,920,480)],water:[R(440,120,460,360)],islands:[R(500,180,340,240)],lines:[{pts:[[500,270],[500,180],[840,180],[840,270]],style:'castle'},{pts:[[840,330],[840,420],[500,420],[500,330]],style:'castle'}],bridges:[{x:830,y:270,w:80,h:60}],movers:[{cx:500,cy:300,w:14,h:60,ax:0,ay:45,period:3,phase:0}],ramps:[{x:330,y:250,w:90,h:100,dir:'+x',acc:150,jump:true}],bumpers:[{x:500,y:180,r:16,style:'tower'},{x:840,y:180,r:16,style:'tower'},{x:840,y:420,r:16,style:'tower'},{x:500,y:420,r:16,style:'tower'}]},
+ {name:'Le Segrete',par:4,tee:[130,300],cup:[870,300],areas:[R(60,100,880,400)],chasm:[R(250,100,100,150),R(250,350,100,150),R(460,220,80,160),R(650,100,100,150),R(650,350,100,150)],movers:[{cx:700,cy:300,w:14,h:60,ax:0,ay:40,period:2.4,phase:0}]},
+ {name:'La Sala del Trono',par:3,tee:[100,300],cup:[860,300],areas:[R(60,140,880,320)],terraces:[{x:700,y:180,w:200,h:240,lv:1},{x:800,y:240,w:100,h:120,lv:2}],stairs:[{x:640,y:190,w:60,h:90,dir:'+x'},{x:760,y:240,w:40,h:60,dir:'+x'}],slopes:[{poly:R(140,280,100,40),ax:350,ay:0,pad:1}],bumpers:[{x:250,y:200,r:14},{x:250,y:400,r:14},{x:400,y:200,r:14},{x:400,y:400,r:14},{x:550,y:200,r:14},{x:550,y:400,r:14}]},
+ {name:'Il Mulino del Re',par:3,tee:[130,300],cup:[880,300],areas:[R(60,100,880,400)],mills:[{x:500,y:300,len:110,hub:14,n:4,speed:1.2}],blocks:[{poly:R(460,100,80,90)},{poly:R(460,410,80,90)}],hills:[{x:740,y:300,r:100,s:140}],bumpers:[{x:300,y:170,r:14,style:'tree'},{x:300,y:430,r:14,style:'tree'}]},
+ {name:'Il Torneo',par:3,tee:[120,300],cup:[880,300],areas:[R(60,80,880,440)],lines:[{pts:[[200,300],[790,300]],style:'rail'}],movers:[{cx:500,cy:190,w:60,h:40,ax:230,ay:0,period:3.2,phase:0},{cx:500,cy:410,w:60,h:40,ax:-230,ay:0,period:2.6,phase:1}],terraces:[{x:820,y:80,w:120,h:440}],stairs:[{x:760,y:150,w:60,h:80,dir:'+x'},{x:760,y:370,w:60,h:80,dir:'+x'}]},
+ {name:'Il Labirinto di Siepi',par:5,tee:[110,110],cup:[900,500],areas:[R(40,40,920,520)],lines:[[[200,40],[200,400]],[[360,200],[360,560]],[[520,40],[520,240]],[[520,360],[520,560]],[[680,40],[680,400]],[[840,200],[840,560]],[[200,400],[300,400]],[[520,240],[620,240]],[[680,400],[780,400]]].map(p=>({pts:p,style:'hedge'})),water:[ell(440,110,36,36)],bumpers:[{x:280,y:480,r:14,style:'tree'},{x:600,y:140,r:14,style:'tree'},{x:760,y:480,r:14,style:'tree'}]},
+ {name:'Le Mura',par:4,tee:[80,300],cup:[860,320],areas:[R(40,60,920,480)],water:[R(40,60,920,480)],islands:[R(40,240,180,120),R(740,200,220,240)],terraces:[{x:220,y:270,w:280,h:60,dry:1},{x:440,y:110,w:60,h:220,dry:1},{x:440,y:110,w:300,h:60,dry:1},{x:680,y:110,w:60,h:240,dry:1}],stairs:[{x:160,y:270,w:60,h:60,dir:'+x'}],bumpers:[{x:512,y:300,r:12,style:'tower'},{x:470,y:98,r:12,style:'tower'},{x:752,y:140,r:12,style:'tower'},{x:710,y:362,r:12,style:'tower'}]},
+ {name:'La Torre del Mago',par:5,tee:[120,300],cup:[500,300],areas:[R(60,60,880,480)],terraces:[{x:220,y:70,w:560,h:460,lv:1},{x:330,y:160,w:340,h:280,lv:2},{x:430,y:240,w:140,h:120,lv:3}],stairs:[{x:160,y:260,w:60,h:80,dir:'+x'},{x:460,y:440,w:80,h:60,dir:'-y'},{x:570,y:260,w:60,h:80,dir:'-x'}],bumpers:[{x:850,y:150,r:16,bouncy:1},{x:850,y:450,r:16,bouncy:1}]},
+ {name:'Il Ponte del Drago',par:3,tee:[140,300],cup:[860,300],areas:[R(60,100,880,400)],water:[R(250,100,500,400)],bridges:[{x:240,y:265,w:520,h:70,acc:110}],movers:[{cx:500,cy:300,w:14,h:34,ax:0,ay:30,period:2.2,phase:0}],bumpers:[{x:240,y:250,r:12},{x:240,y:350,r:12},{x:760,y:250,r:12},{x:760,y:350,r:12}]},
+ {name:'Il Cortile',par:4,tee:[120,480],cup:[890,120],areas:[R(40,60,920,480)],terraces:[{x:40,y:60,w:920,h:120}],stairs:[{x:80,y:180,w:100,h:60,dir:'-y'},{x:780,y:180,w:100,h:60,dir:'-y'}],movers:[{cx:500,cy:120,w:14,h:60,ax:0,ay:25,period:2,phase:0}],bumpers:[{x:300,y:120,r:14},{x:650,y:120,r:14}],chasm:[ell(600,380,45,45)],mills:[{x:380,y:380,len:80,hub:12,n:4,speed:1.3}],sand:[R(700,300,120,80)]},
+ {name:'Le Catapulte',par:4,tee:[130,300],cup:[870,300],areas:[R(60,60,880,480)],terraces:[{x:450,y:60,w:40,h:220},{x:450,y:320,w:40,h:220},{x:700,y:60,w:40,h:480}],movers:[{cx:470,cy:300,w:14,h:40,ax:0,ay:24,period:2.2,phase:0}],ramps:[{x:300,y:150,w:90,h:100,dir:'+x',acc:150,jump:true},{x:560,y:350,w:90,h:100,dir:'+x',acc:150,jump:true}],stairs:[{x:640,y:80,w:60,h:60,dir:'+x'}],bumpers:[{x:850,y:150,r:14},{x:850,y:450,r:14},{x:600,y:200,r:14,bouncy:1}]},
+ {name:'Salone delle Armature',par:4,tee:[130,300],cup:[870,300],areas:[R(60,60,880,480)],ice:[R(250,60,450,480)],bumpers:[...BOUNCY([{x:330,y:160,r:18},{x:330,y:440,r:18},{x:470,y:300,r:18},{x:610,y:160,r:18},{x:610,y:440,r:18}]),{x:470,y:120,r:12},{x:470,y:480,r:12}],movers:[{cx:720,cy:300,w:14,h:120,ax:0,ay:150,period:3,phase:0}],terraces:[{x:800,y:200,w:140,h:200}],stairs:[{x:740,y:270,w:60,h:60,dir:'+x'}]},
+ {name:'Il Cortile Segreto',par:4,tee:[130,300],cup:[740,330],areas:[R(40,60,920,480)],terraces:[{x:500,y:150,w:360,h:40},{x:500,y:410,w:360,h:40},{x:500,y:190,w:40,h:220},{x:820,y:190,w:40,h:220}],stairs:[{x:440,y:260,w:60,h:80,dir:'+x'}],water:[ell(630,315,32,28)],tunnels:[{a:[110,110],b:[600,390],out:0}],lines:[{pts:[[40,200],[300,200]],style:'hedge'}],mills:[{x:300,y:400,len:70,hub:12,n:4,speed:1.4}],quick:[{x:380,y:130,r:40}]},
+ {name:'L’Assedio del Castello',par:5,tee:[100,300],cup:[900,300],areas:[R(40,40,920,520)],water:[R(300,40,80,520)],bridges:[{x:290,y:400,w:100,h:70}],terraces:[{x:430,y:40,w:40,h:520,lv:1},{x:700,y:40,w:260,h:520,lv:1},{x:840,y:180,w:120,h:240,lv:2}],stairs:[{x:390,y:120,w:40,h:80,dir:'+x'},{x:640,y:420,w:60,h:80,dir:'+x'},{x:780,y:270,w:60,h:60,dir:'+x'}],ramps:[{x:180,y:250,w:90,h:100,dir:'+x',acc:150,jump:true}],mills:[{x:585,y:290,len:80,hub:12,n:4,speed:1.3}],bumpers:[{x:760,y:120,r:14},{x:760,y:480,r:14}]},
+];
 const CIRCUITS=[
  {id:'borgo',name:'Borgo dei Mulini',desc:'Mulini a vento, ponticelli e un castello',holes:BORGO},
  {id:'montagna',name:'Alta Montagna',desc:'Ghiaccio, neve, crepacci e trampolini',holes:MONTAGNA},
  {id:'mare',name:'Baia del Faro',desc:'Pontili, fari, granchi e un galeone',holes:MARE},
  {id:'giungla',name:'Giungla Smeraldo',desc:'Fango, liane, ponti di corda e totem',holes:GIUNGLA},
  {id:'deserto',name:'Mare di Dune',desc:'Sabbie mobili, piramidi e cammelli',holes:DESERTO},
+ {id:'lunapark',name:'Luna Park',desc:'Giostre, autoscontri e montagne russe',holes:LUNAPARK,nuovo:1},
+ {id:'vulcano',name:'Il Vulcano',desc:'Lava, crateri, massi e terrazze di basalto',holes:VULCANO,nuovo:1},
+ {id:'spazio',name:'Base Lunare',desc:'Bassa gravità, satelliti e buchi neri',holes:SPAZIO,nuovo:1},
+ {id:'castello',name:'Castello Incantato',desc:'Fossati, mura, torri e scalinate',holes:CASTELLO,nuovo:1},
  {id:'mie',name:'Le mie buche',desc:'Costruite da te nell’editor',get holes(){return mineDefs()}},
 ];
 
 // ---------- compile a hole definition ----------
-const EDGE={house:'#e9dcc4',chalet:'#4a3020',hut:'#ffffff',straw:'#8a6a2a',temple:'#6f705e',stone:'#b08850',pyramid:'#b98d4f',rock:'#5f6878'};
-const LINEC={castle:'#bdb6cf',temple:'#7d7f6a',stone:'#c49a5c',hull:'#6e4524'};
+const EDGE={house:'#e9dcc4',chalet:'#4a3020',hut:'#ffffff',straw:'#8a6a2a',temple:'#6f705e',stone:'#b08850',pyramid:'#b98d4f',rock:'#5f6878',tent:'#ffffff',basalt:'#ff7a30',station:'#dfe6f5',keep:'#7d7590'};
+const LINEC={hedge:'#2c6e38',castle:'#bdb6cf',temple:'#7d7f6a',stone:'#c49a5c',hull:'#6e4524'};
 function compile(d,th){
   const h={name:d.name,par:d.par,tee:{x:d.tee[0],y:d.tee[1]},cup:{x:d.cup[0],y:d.cup[1]},areas:d.areas,
     blocks:(d.blocks||[]).map(b=>({...b,style:b.style||th.block})),bumpers:(d.bumpers||[]).map(b=>({...b,flash:0})),
@@ -537,6 +682,27 @@ function compile(d,th){
     else{add([[br.x,br.y],[br.x,br.y+br.h]],'rail');add([[br.x+br.w,br.y],[br.x+br.w,br.y+br.h]],'rail');
       if(br.acc){h.slopes.push({poly:R(br.x,br.y,br.w,br.h/2),ax:0,ay:-br.acc,hidden:1});h.slopes.push({poly:R(br.x,br.y+br.h/2,br.w,br.h/2),ax:0,ay:br.acc,hidden:1})}}
   });
+  // terraces: raised floors (lv 1, 2…). Their edges are drops: from above the ball falls off, from below they stop it.
+  // stairs: sloping strips climbing onto a terrace (dir = uphill); the stretch of edge they touch stays open.
+  h.gz=th.gz||GZ;
+  h.terr=(d.terraces||[]).map(t=>({...t,lv:t.lv||1})).sort((a,b)=>a.lv-b.lv);
+  h.terr.forEach(t=>{if(t.dry)h.dry.push(R(t.x,t.y,t.w,t.h))}); // dry: a walkway over water or a chasm
+  h.stairs=(d.stairs||[]).map(s=>({s:200,...s}));
+  h.stairs.forEach(s=>{const[dx,dy]=DIRS[s.dir];h.slopes.push({poly:R(s.x,s.y,s.w,s.h),ax:-dx*s.s,ay:-dy*s.s,hidden:1})});
+  h.cliffs=[];
+  h.terr.forEach(t=>{const x2=t.x+t.w,y2=t.y+t.h;
+    for(const[ax,ay,bx,by,nx,ny]of[[t.x,t.y,x2,t.y,0,-1],[x2,t.y,x2,y2,1,0],[x2,y2,t.x,y2,0,1],[t.x,y2,t.x,t.y,-1,0]]){
+      const vert=nx!==0,lo=vert?Math.min(ay,by):Math.min(ax,bx),hi=vert?Math.max(ay,by):Math.max(ax,bx),line=vert?ax:ay,gaps=[];
+      for(const s of h.stairs){const[dx,dy]=DIRS[s.dir];if(dx!==-nx||dy!==-ny)continue;
+        const side=vert?(nx>0?s.x:s.x+s.w):(ny>0?s.y:s.y+s.h);if(Math.abs(side-line)<=2)gaps.push(vert?[s.y,s.y+s.h]:[s.x,s.x+s.w])}
+      // no edge where it borders another terrace at least as high
+      for(const t2 of h.terr){if(t2===t||t2.lv<t.lv)continue;const o=line+(vert?nx:ny);
+        if(vert?(o>=t2.x&&o<=t2.x+t2.w):(o>=t2.y&&o<=t2.y+t2.h))gaps.push(vert?[t2.y,t2.y+t2.h]:[t2.x,t2.x+t2.w])}
+      gaps.sort((a,b)=>a[0]-b[0]);let p=lo;const keep=[];
+      for(const[g0,g1]of gaps){if(g0>p)keep.push([p,Math.min(g0,hi)]);p=Math.max(p,g1)}if(p<hi)keep.push([p,hi]);
+      const half=nx>0||ny>0?12:3; // the faces towards the viewer are drawn as a wall this thick
+      for(const[k0,k1]of keep)if(k1-k0>1)h.cliffs.push(vert?{x1:line,y1:k0,x2:line,y2:k1,nx,ny,lv:t.lv,half,t}:{x1:k0,y1:line,x2:k1,y2:line,nx,ny,lv:t.lv,half,t});
+    }});
   return h;
 }
 
@@ -589,12 +755,12 @@ const $=s=>document.querySelector(s);
 const cv=$('#cv'),ctx=cv.getContext('2d'),stage=$('#stage');
 const sc=document.createElement('canvas'),sg=sc.getContext('2d');
 const view={s:1,ox:0,oy:0,rot:false,dpr:1,cw:1,ch:1,up:[0,-1],right:[1,0]};
-const cfg={circuit:'borgo',holes:9,mode:'free',limit:'p2',ctrl:'drag',guide:false};
+const cfg={circuit:'borgo',holes:9,mode:'free',limit:'p2',ctrl:'drag',guide:false,players:1,names:[],realBalls:true};
 try{const s=JSON.parse(localStorage.getItem('mp-cfg2')||'null');if(s)Object.assign(cfg,s)}catch(e){}
 if(!CIRCUITS.find(c=>c.id===cfg.circuit))cfg.circuit='borgo';
 const G={screen:'menu',idx:0,scores:[],strokes:0,hole:null,ball:null,moving:false,restT:0,shotT:0,lastRest:null,aim:null,
-  shot:{walls:0,jumped:false,startDist:0},simT:0,acc:0,wp:[],fx:[],rings:[],fwq:[],shake:0,flash:0,timers:[],started:false,trail:[],guide:null};
-let PRED=null;
+  shot:{walls:0,jumped:false,startDist:0},simT:0,acc:0,wp:[],fx:[],rings:[],fwq:[],shake:0,flash:0,timers:[],started:false,trail:[],guide:null,multi:false,players:[],turn:0,shotTaken:false};
+let PRED=null,OTHER=null; // OTHER: another player's real ball being simulated
 const circ=()=>CIRCUITS.find(c=>c.id===cfg.circuit);
 const themeId=()=>(G.curDef&&G.curDef.theme)||(THEMES[cfg.circuit]?cfg.circuit:'borgo');
 const theme=()=>THEMES[themeId()];
@@ -607,10 +773,13 @@ function loadDef(def,i){
   G.idx=i;G.curDef=def;G.hole=compile(def,theme());const t=G.hole.tee;
   G.ball={x:t.x,y:t.y,vx:0,vy:0,z:0,vz:0,ramp:-1,tcd:0,sink:null,hidden:false};
   G.strokes=0;G.moving=false;G.aim=null;G.lastRest={x:t.x,y:t.y};G.trail=[];G.wp=[];G.rings=[];
+  if(G.multi){const tb=G.ball;G.players.forEach(P=>{P.ball={...tb,hidden:P.out};P.strokes=0;P.lastRest={x:tb.x,y:tb.y};P.done=P.out});
+    // whoever tees off first rotates from hole to hole
+    const n=G.players.length;let f=0;for(let k=0;k<n;k++){const j=(i+k)%n;if(!G.players[j].out){f=j;break}}useTurn(f)}
   stage.style.setProperty('--void',theme().void);
   applyLab(false);renderStatic();updHUD();if(cfg.mode==='lab')refreshLab();
   if(G.screen==='play'){const lim=cfg.mode==='hl'?` · max ${limitFor(G.hole)} colpi`:cfg.mode==='lab'?' · Laboratorio':'';
-    showBanner(`<em>Buca ${i+1}</em>${G.hole.name} · Par ${G.hole.par}${lim}`)}
+    showBanner(`<em>Buca ${i+1}</em>${G.hole.name} · Par ${G.hole.par}${lim}${G.multi?` · inizia ${pTag(curP())}`:''}`)}
 }
 
 // ---------- physics ----------
@@ -629,13 +798,15 @@ function surfAt(x,y){
   if(inAny(h.ice,x,y))return'ghiaccio';
   return'campo';
 }
+function lvAt(x,y){let l=0;for(const t of G.hole.terr)if(t.lv>l&&x>=t.x&&x<=t.x+t.w&&y>=t.y&&y<=t.y+t.h)l=t.lv;return l}
+const inStair=(x,y)=>G.hole.stairs.some(s=>x>=s.x-1&&x<=s.x+s.w+1&&y>=s.y-1&&y<=s.y+s.h+1);
 function rampAt(x,y){const rs=G.hole.ramps;for(let i=0;i<rs.length;i++){const r=rs[i];if(x>=r.x&&x<=r.x+r.w&&y>=r.y&&y<=r.y+r.h)return i}return-1}
 function moverState(m,t){const w=TAU/m.period,s=Math.sin(w*t+m.phase),c=Math.cos(w*t+m.phase);return[m.cx+m.ax*s,m.cy+m.ay*s,m.ax*w*c,m.ay*w*c]}
 
 function impact(v,kind,x,y){
   if(v<30)return;
   if(PRED){if(kind!=='wood'||v>60)PRED.hits.push([x,y]);return}
-  if(v>60&&kind!=='wood')G.shot.walls++;
+  if(v>60&&kind!=='wood'&&!OTHER)G.shot.walls++;
   if(kind==='bumper')sfx.bumper();else if(kind==='wood')sfx.wood(v);else if(kind==='post')sfx.post(v);else sfx.wall(v);
   if(v>230)for(let i=0;i<5;i++){const a=Math.random()*TAU,s=60+Math.random()*120;G.wp.push({x,y,vx:Math.cos(a)*s,vy:Math.sin(a)*s,life:.35,max:.35,size:1.8,color:'#fff8d8'})}
 }
@@ -659,9 +830,18 @@ function hitCircle(cx,cy,rad,e,kind,bp){
     if(bp&&bp.bouncy){const s=Math.hypot(b.vx,b.vy);if(s<280){b.vx*=280/s;b.vy*=280/s}if(!PRED)bp.flash=1}
     impact(Math.max(-vn,bp&&bp.bouncy?100:0),kind,cx+nx*rad,cy+ny*rad)}
 }
-function collide(){
+// a terrace edge seen from below: it only stops a ball moving towards it, so a ball dropping off is never pushed back
+function hitCliff(c){
+  const b=G.ball,ex=c.x2-c.x1,ey=c.y2-c.y1,L2=ex*ex+ey*ey;let t=((b.x-c.x1)*ex+(b.y-c.y1)*ey)/L2;t=t<0?0:t>1?1:t;
+  const cx=c.x1+ex*t,cy=c.y1+ey*t,dx=b.x-cx,dy=b.y-cy,d=Math.hypot(dx,dy),m=c.half+BALL_R;if(d>=m)return;
+  let nx=c.nx,ny=c.ny;if(d>1e-6&&dx*nx+dy*ny>0){nx=dx/d;ny=dy/d}
+  const vn=b.vx*nx+b.vy*ny;if(vn>=0)return;
+  b.x=cx+nx*m;b.y=cy+ny*m;const e=E_WALL*PH.eK,tx=(b.vx-vn*nx)*.97,ty=(b.vy-vn*ny)*.97;b.vx=tx-e*vn*nx;b.vy=ty-e*vn*ny;impact(-vn,'wall',cx,cy);
+}
+function collide(L0=0){
   const h=G.hole,t=G.simT;
   for(let it=0;it<2;it++){
+    for(const cl of h.cliffs)if(cl.lv>L0&&G.ball.z<TH*(cl.lv-L0))hitCliff(cl);
     for(const s of h.segs)hitSeg(s.x1,s.y1,s.x2,s.y2,WALL_HALF,(s.style==='rail'?.6:E_WALL)*PH.eK,s.style==='rail'?'wood':'wall');
     for(const bp of h.bumpers)hitCircle(bp.x,bp.y,bp.r,bp.bouncy?1.25:.8*PH.eK,bp.bouncy?'bumper':bp.style==='tower'?'wall':'post',bp);
     for(const m of h.mills){
@@ -678,11 +858,11 @@ function collide(){
 }
 function physics(dt){
   G.simT+=dt;const h=G.hole,b=G.ball;
-  if(!PRED)for(const bp of h.bumpers)if(bp.flash>0)bp.flash=Math.max(0,bp.flash-dt*3);
+  if(!PRED&&!OTHER)for(const bp of h.bumpers)if(bp.flash>0)bp.flash=Math.max(0,bp.flash-dt*3);
   if(b.sink){b.sink.t+=dt;if(b.sink.t>=.38&&!b.sink.done){b.sink.done=true;holed()}return}
   if(b.hidden)return;
   if(b.tcd>0)b.tcd-=dt;
-  if(b.z>0){b.vz-=GZ*dt;b.z+=b.vz*dt;
+  if(b.z>0){b.vz-=h.gz*dt;b.z+=b.vz*dt;
     if(b.z<=0){b.z=0;const imp=-b.vz;if(imp>80){b.vz=imp*.32;b.z=.001}else b.vz=0;b.vx*=.88;b.vy*=.88;
       if(!PRED){sfx.land(imp);if(inAny(h.sand,b.x,b.y))puff(b.x,b.y,theme().rough,10)}}}
   const air=b.z>0;
@@ -693,18 +873,21 @@ function physics(dt){
     if(Math.hypot(b.vx,b.vy)<2.5&&Math.hypot(ax,ay)<dec*.97){b.vx=0;b.vy=0}
     const cx=h.cup.x-b.x,cy=h.cup.y-b.y,cd=Math.hypot(cx,cy);
     if(cd<CUP_R){const s=Math.hypot(b.vx,b.vy);
-      if(s<VCAP&&cd<CUP_R-BALL_R*.43){if(PRED){PRED.end='cup';return}startSink();return}
+      if(s<VCAP&&cd<CUP_R-BALL_R*.43){if(PRED){PRED.end='cup';return}if(OTHER){otherSunk();return}startSink();return}
       if(cd>.01){const pull=3000*(1-cd/CUP_R);b.vx+=cx/cd*pull*dt;b.vy+=cy/cd*pull*dt}}
     for(const q of h.quick)if(Math.hypot(b.x-q.x,b.y-q.y)<q.r*.35&&Math.hypot(b.vx,b.vy)<45){hazard('quick');return}
   }
-  const prevRamp=b.ramp;
+  const prevRamp=b.ramp,L0=h.terr.length?lvAt(b.x,b.y):0;
   b.x+=b.vx*dt;b.y+=b.vy*dt;
-  collide();
+  collide(L0);
+  if(h.terr.length){const L1=lvAt(b.x,b.y);
+    if(L1<L0&&!inStair(b.x,b.y)){if(b.z===0)b.vz=0;b.z+=TH*(L0-L1)} // rolled off the edge: drops to the floor below
+    else if(L1>L0&&b.z>0)b.z=Math.max(.001,b.z-TH*(L1-L0))}       // flew onto a higher floor
   if(!air){
     b.ramp=rampAt(b.x,b.y);
     if(prevRamp>=0&&b.ramp!==prevRamp){const r=h.ramps[prevRamp];
       if(r.jump){const[dx,dy]=DIRS[r.dir],half=(dx?r.w:r.h)/2,proj=(b.x-(r.x+r.w/2))*dx+(b.y-(r.y+r.h/2))*dy,along=b.vx*dx+b.vy*dy;
-        if(proj>=half-1&&along>40){b.vz=along*LAUNCH;b.z=.01;b.ramp=-1;if(!PRED){G.shot.jumped=true;sfx.jump()}}}}
+        if(proj>=half-1&&along>40){b.vz=along*LAUNCH;b.z=.01;b.ramp=-1;if(!PRED){if(!OTHER)G.shot.jumped=true;sfx.jump()}}}}
     if(b.z===0){
       if(!inAny(h.dry,b.x,b.y)){
         if(inAny(h.water,b.x,b.y)){hazard('water');return}
@@ -715,19 +898,47 @@ function physics(dt){
         if(PRED)PRED.pts.push(null);else puff(b.x,b.y,'#c9c2dc',10);
         b.x=tn.b[0];b.y=tn.b[1];b.vx=Math.cos(tn.out)*s;b.vy=Math.sin(tn.out)*s;b.tcd=.5;
         if(!PRED){G.trail=[];sfx.tunnel();puff(b.x,b.y,'#c9c2dc',12)}break}}
-      if(!inAny(h.areas,b.x,b.y)){if(PRED){PRED.end='out';return}b.x=G.lastRest.x;b.y=G.lastRest.y;b.vx=b.vy=0}
+      if(!inAny(h.areas,b.x,b.y)){if(PRED){PRED.end='out';return}const lr=OTHER?OTHER.lastRest:G.lastRest;b.x=lr.x;b.y=lr.y;b.vx=b.vy=0}
     }
   }
 }
 function startSink(){const b=G.ball;b.sink={t:0,x0:b.x,y0:b.y};b.vx=b.vy=0;sfx.cup()}
+// another player's ball pushed into a hazard: back where it was resting, no penalty
+function otherHazard(kind){const P=OTHER,b=G.ball;
+  if(kind==='water')sfx.splash();else if(kind==='chasm')sfx.fall();else sfx.sink();puff(b.x,b.y,'rgba(255,255,255,.6)',12);
+  b.x=P.lastRest.x;b.y=P.lastRest.y;b.vx=b.vy=b.vz=0;b.z=0;b.ramp=-1;toast(`La pallina di ${P.name} torna al suo posto`)}
+// another player's ball pushed into the cup: it counts as holed with the strokes taken so far
+function otherSunk(){const P=OTHER,b=G.ball,h=G.hole,s=Math.max(1,P.strokes);
+  b.hidden=true;b.vx=b.vy=0;P.done=true;P.scores[G.idx]=s;sfx.cup();
+  G.rings.push({x:h.cup.x,y:h.cup.y,r:CUP_R,grow:90,life:.9,max:.9,color:'255,214,120'});toast(`Pallina di ${P.name} in buca: ${fmtRel(s-h.par)}`)}
+function stepOthers(dt){
+  const save=G.ball,st=G.simT,live=[];
+  G.players.forEach((P,i)=>{if(i===G.turn||P.done||P.out||!P.strokes||!P.ball||P.ball.hidden)return;const b=P.ball;
+    G.ball=b;OTHER=P;physics(dt);G.simT=st;OTHER=null;G.ball=save;
+    if(!b.hidden){live.push(b);if(!b.vx&&!b.vy&&!b.z)P.lastRest={x:b.x,y:b.y}}});
+  const list=[G.ball,...live];
+  for(let i=0;i<list.length;i++)for(let j=i+1;j<list.length;j++)ballHit(list[i],list[j]);
+}
+// equal masses: an elastic hit with a little energy lost (restitution 0.92)
+function ballHit(a,b){
+  if(a.hidden||b.hidden||a.sink||b.sink||a.z>0||b.z>0)return;
+  if(G.hole.terr.length&&lvAt(a.x,a.y)!==lvAt(b.x,b.y))return;
+  const dx=b.x-a.x,dy=b.y-a.y,d=Math.hypot(dx,dy),m=2*BALL_R;if(d>=m||d<1e-6)return;
+  const nx=dx/d,ny=dy/d,ov=(m-d)/2;a.x-=nx*ov;a.y-=ny*ov;b.x+=nx*ov;b.y+=ny*ov;
+  const rv=(b.vx-a.vx)*nx+(b.vy-a.vy)*ny;
+  if(rv<0){const j=-(1.92)*rv/2;a.vx-=j*nx;a.vy-=j*ny;b.vx+=j*nx;b.vy+=j*ny;
+    if(-rv>25&&throttle('bb',50)){const k=Math.min(1,-rv/400);tone(2100,.05,{type:'triangle',vol:.08+.2*k,to:1500});noise(.03,{f:4500,q:2,vol:.05+.12*k})}}
+}
+const othersStill=()=>!(G.multi&&cfg.realBalls)||G.players.every((P,i)=>i===G.turn||P.done||P.out||!P.strokes||!P.ball||P.ball.hidden||(!P.ball.vx&&!P.ball.vy&&!P.ball.z));
 function hazard(kind){
   if(PRED){PRED.end=kind;return}
+  if(OTHER){otherHazard(kind);return}
   const b=G.ball,th=theme();
-  if(kind==='water'){sfx.splash();
-    for(let i=0;i<28;i++){const a=Math.random()*TAU,s=40+Math.random()*170;G.wp.push({x:b.x,y:b.y,vx:Math.cos(a)*s,vy:Math.sin(a)*s,life:.7,max:.7,size:2+Math.random()*2.5,color:i%3?'#bfe6ff':'#ffffff'})}
-    G.rings.push({x:b.x,y:b.y,r:6,grow:90,life:.8,max:.8,color:'255,255,255'});toast('Splash! +1 colpo')}
+  if(kind==='water'){sfx.splash();const sp=th.splash||['#bfe6ff','#ffffff'];
+    for(let i=0;i<28;i++){const a=Math.random()*TAU,s=40+Math.random()*170;G.wp.push({x:b.x,y:b.y,vx:Math.cos(a)*s,vy:Math.sin(a)*s,life:.7,max:.7,size:2+Math.random()*2.5,color:i%3?sp[0]:sp[1]})}
+    G.rings.push({x:b.x,y:b.y,r:6,grow:90,life:.8,max:.8,color:'255,255,255'});toast(th.waterMsg||'Splash! +1 colpo')}
   else if(kind==='chasm'){sfx.fall();puff(b.x,b.y,'rgba(255,255,255,.6)',14);toast(th.chasmMsg)}
-  else{sfx.sink();puff(b.x,b.y,th.quick,22);toast('Sabbie mobili! +1 colpo')}
+  else{sfx.sink();puff(b.x,b.y,th.quick,22);toast(th.quickMsg||'Sabbie mobili! +1 colpo')}
   b.hidden=true;b.vx=b.vy=0;b.z=0;G.strokes++;updHUD();
   G.timers.push({t:1,fn:()=>{b.x=G.lastRest.x;b.y=G.lastRest.y;b.hidden=false;b.ramp=-1;G.trail=[];G.moving=false;afterRest()}});
 }
@@ -758,17 +969,53 @@ function shoot(dx,dy,p){
   const b=G.ball,h=G.hole,v=Math.max(.03,p)*PH.vmax;
   b.vx=dx*v;b.vy=dy*v;G.strokes++;G.moving=true;G.restT=0;G.shotT=0;
   G.shot={walls:0,jumped:false,startDist:Math.hypot(h.cup.x-b.x,h.cup.y-b.y)};
-  G.lastRest={x:b.x,y:b.y};G.aim=null;G.guide=null;sfx.putt(p);updHUD();setHint();
+  G.lastRest={x:b.x,y:b.y};G.aim=null;G.guide=null;G.shotTaken=true;sfx.putt(p);updHUD();setHint();
+}
+// ----- more players on one device: one shot each, in rotation
+const PCOL=['#ff6f61','#4fd8ff','#ffc44d','#7be38f','#c08bff','#ff9ad5'];
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const curP=()=>G.players[G.turn];
+const pTag=P=>`<i class="pdot" style="background:${P.color}"></i>${esc(P.name)}`;
+function stashTurn(){const P=curP();if(!P)return;P.ball=G.ball;P.strokes=G.strokes;P.lastRest=G.lastRest}
+function useTurn(i){G.turn=i;const P=G.players[i];G.ball=P.ball;G.strokes=P.strokes;G.lastRest=P.lastRest;G.scores=P.scores;
+  G.trail=[];G.aim=null;G.moving=false;G.shotTaken=false;updHUD()}
+function nextTurn(){
+  G.timers=G.timers.filter(t=>t.fn!==nextTurn);stashTurn();
+  const n=G.players.length,active=G.players.filter(P=>!P.done&&!P.out).length;
+  for(let k=1;k<=n;k++){const j=(G.turn+k)%n,P=G.players[j];
+    if(!P.done&&!P.out){const same=j===G.turn;useTurn(j);G.screen='play';setHint();
+      if(!same||active>1)showBanner(`Tocca a ${pTag(P)} · colpo ${P.strokes+1}`);return}}
+  if(G.players.every(P=>P.out)){multiOver();return}
+  nextHole();
+}
+function rankPlayers(){const hs=HOLES();return G.players.map(P=>{let s=0,p=0,n=0;P.scores.forEach((v,k)=>{if(v!=null&&hs[k]){s+=v;p+=hs[k].par;n++}});return{P,s,d:s-p,n}})
+  .sort((a,b)=>(a.P.out-b.P.out)||(b.n-a.n)||(a.d-b.d))}
+function rankHtml(r){return`<ol class="rank">${r.map((x,i)=>{const same=i>0&&x.d===r[i-1].d&&x.n===r[i-1].n&&x.P.out===r[i-1].P.out;
+  return`<li${same?' class="tie"':''}><span>${pTag(x.P)}</span><b class="${x.n?relCls(x.d):''}">${x.n?fmtRel(x.d):'–'}</b><small>${x.P.out?`eliminato dopo ${x.n} ${x.n===1?'buca':'buche'}`:`${x.s} colpi`}</small></li>`}).join('')}</ol>`}
+function finishMulti(){
+  G.screen='over';G.started=false;const r=rankPlayers(),w=r[0],tie=r.length>1&&r[1].d===w.d&&r[1].n===w.n&&r[1].P.out===w.P.out;
+  fireworks(6);sfx.fanfare(false);
+  showCard(tie?'Pareggio!':`Vince ${w.P.name}!`,rankHtml(r),[['Gioca ancora',newGame,1],['Menu',openMenu]]);
+}
+function multiOver(){
+  G.screen='over';G.started=false;sfx.lose();
+  showCard('Tutti eliminati!',`<p class="lead" style="margin-top:4px">Nessuno è arrivato in fondo. Classifica per buche completate:</p>${rankHtml(rankPlayers())}`,[['Riprova',newGame,1],['Menu',openMenu]]);
 }
 function afterRest(){
   G.moving=false;const b=G.ball;if(!b.hidden)G.lastRest={x:b.x,y:b.y};
   updHUD();setHint();
   if(G.screen!=='play'||G.testing)return;
+  if(G.multi){
+    if(!G.shotTaken)return; // the ball was only nudged by a moving obstacle
+    const P=curP();G.screen='between';
+    if(cfg.mode==='hl'&&G.strokes>=limitFor(G.hole)){P.out=true;G.ball.hidden=true;G.scores[G.idx]=null;sfx.lose();toast(`${P.name} è eliminato!`);G.timers.push({t:1.8,fn:nextTurn});return}
+    if(cfg.mode==='free'&&G.strokes>=10){G.scores[G.idx]=10;P.done=true;G.ball.hidden=true;toast(`${P.name}: pallina raccolta (${fmtRel(10-G.hole.par)})`);G.timers.push({t:1.8,fn:nextTurn});return}
+    G.timers.push({t:.5,fn:nextTurn});return}
   if(cfg.mode==='hl'&&G.strokes>=limitFor(G.hole)){gameOver();return}
   if(cfg.mode==='free'&&G.strokes>=10){G.scores[G.idx]=10;G.screen='between';toast(`Pallina raccolta: ${fmtRel(10-G.hole.par)}`);G.timers.push({t:1.8,fn:nextHole})}
 }
 function holed(){
-  const h=G.hole,s=G.strokes,diff=s-h.par;if(!G.testing)G.scores[G.idx]=s;G.ball.hidden=true;
+  const h=G.hole,s=G.strokes,diff=s-h.par;if(!G.testing)G.scores[G.idx]=s;G.ball.hidden=true;if(G.multi)curP().done=true;
   let title,tier=0;
   if(s===1){title='Buca in uno!';tier=3}
   else if(diff<=-3){title='Albatros!';tier=3}
@@ -785,9 +1032,9 @@ function holed(){
   if(G.shot.jumped)bonus.push('Al volo!');
   if(bonus.length&&tier<1)tier=1;if(bonus.length>=2&&tier<2)tier=2;
   const t=totals();
-  celebrate(tier,title,bonus,`Buca ${fmtRel(diff)} · ${s} ${s===1?'colpo':'colpi'} su par ${h.par} · Totale ${fmtRel(t.d)}`);
+  celebrate(tier,title,bonus,`${G.multi?esc(curP().name)+' · ':''}Buca ${fmtRel(diff)} · ${s} ${s===1?'colpo':'colpi'} su par ${h.par} · Totale ${fmtRel(t.d)}`);
   G.screen='between';G.moving=false;
-  G.timers.push({t:tier>=2?3.8:2.7,fn:nextHole,skippable:.8});
+  G.timers.push({t:tier>=2?3.8:2.7,fn:G.multi?nextTurn:nextHole,skippable:.8});
   updHUD();
 }
 function nextHole(){
@@ -797,6 +1044,9 @@ function nextHole(){
 }
 function newGame(){
   if(!HOLES().length){openEditor();return}
+  G.multi=cfg.players>1;G.turn=0;
+  G.players=G.multi?Array.from({length:cfg.players},(_,i)=>({name:(cfg.names[i]||'').trim()||`Giocatore ${i+1}`,color:PCOL[i],scores:[],out:false,done:false})):[];
+  $('#app').classList.toggle('multi',G.multi);
   G.scores=[];G.screen='play';G.started=true;G.timers=[];G.fx=[];G.fwq=[];
   $('#ovMenu').hidden=true;$('#ovCard').hidden=true;loadHole(0);setHint();
 }
@@ -807,6 +1057,7 @@ function bestKey(){return`mp2-best-${cfg.circuit}-${cfg.holes}-${cfg.mode}${cfg.
 function getBest(){try{const v=localStorage.getItem(bestKey());return v!=null?+v:null}catch(e){return null}}
 function setBest(v){try{localStorage.setItem(bestKey(),String(v))}catch(e){}}
 function finish(){
+  if(G.multi){finishMulti();return}
   G.screen='over';G.started=false;const lab=cfg.mode==='lab',t=totals(),best=lab?null:getBest(),rec=!lab&&(best==null||t.d<best);if(rec)setBest(t.d);
   if(rec){fireworks(6);sfx.fanfare(false)}
   showCard(rec?'Nuovo record!':'Percorso completato',
@@ -850,6 +1101,7 @@ function updHUD(){
   $('#hHole').textContent=G.testing?'Prova':`${G.idx+1}/${n}`;$('#hPar').textContent=h.par;$('#hStrokes').textContent=G.strokes;
   const d=totals().d,tt=$('#hTotal');tt.textContent=fmtRel(d);tt.className=relCls(d);
   const b=G.ball;$('#hDist').textContent=b.sink||b.hidden?'–':`${(Math.hypot(h.cup.x-b.x,h.cup.y-b.y)/PXM).toFixed(1)} m`;
+  $('#turnChip').hidden=!G.multi;if(G.multi&&curP())$('#hTurn').innerHTML=pTag(curP());
   const hl=cfg.mode==='hl';$('#hlChip').hidden=!hl;$('#bLab').hidden=cfg.mode!=='lab';if(cfg.mode!=='lab')$('#lab').hidden=true;
   if(hl){const lim=limitFor(h),left=lim-G.strokes;let s='';for(let i=0;i<lim;i++)s+=`<i class="pip${i<G.strokes?' used':(left===1?' last':'')}"></i>`;$('#hPips').innerHTML=s}
 }
@@ -881,8 +1133,19 @@ function scoreTable(){
     html+=`<div class="tw"><table class="sc">${r1}<td><b>Tot</b></td></tr>${r2}<td>${ps}</td></tr>${r3}<td>${ss||'·'}</td></tr>${r4}<td class="${relCls(ds)}">${ss?fmtRel(ds):'·'}</td></tr>${r5}<td></td></tr></table></div>`}
   return html;
 }
+function scoreTableMulti(){
+  const n=holeCount(),hs=HOLES(),chunks=n>9?[[0,9],[9,n]]:[[0,n]];let html='';
+  for(const[a,z]of chunks){let head='<tr><th>Buca</th>',par='<tr><th>Par</th>',rows='';
+    for(let i=a;i<z;i++){const cur=i===G.idx&&G.screen!=='over'?' c':'';head+=`<td class="${cur}">${i+1}</td>`;par+=`<td class="${cur}">${hs[i].par}</td>`}
+    for(const P of G.players){let r=`<tr><th>${pTag(P)}</th>`,ds=0,any=false;
+      for(let i=a;i<z;i++){const v=P.scores[i],cur=i===G.idx&&G.screen!=='over'?' c':'';
+        if(v==null)r+=`<td class="${cur}">·</td>`;else{const d=v-hs[i].par;ds+=d;any=true;r+=`<td class="${relCls(d)}${cur}">${v}</td>`}}
+      rows+=r+`<td class="${any?relCls(ds):''}">${any?fmtRel(ds):'·'}</td></tr>`}
+    html+=`<div class="tw"><table class="sc">${head}<td><b>±</b></td></tr>${par}<td></td></tr>${rows}</table></div>`}
+  return html;
+}
 function showCard(title,extra,btns){
-  $('#cardTitle').textContent=title;$('#cardBody').innerHTML=extra+scoreTable();
+  $('#cardTitle').textContent=title;$('#cardBody').innerHTML=extra+(G.multi?scoreTableMulti():scoreTable());
   const bx=$('#cardBtns');bx.innerHTML='';
   btns.forEach(([t,fn,pri])=>{const b=document.createElement('button');b.type='button';b.className='btn'+(pri?' primary':'');b.textContent=t;b.onclick=()=>{sfx.ui();fn()};bx.appendChild(b)});
   $('#ovCard').hidden=false;
@@ -895,9 +1158,14 @@ function openMenu(){
 function buildCircuits(){
   $('#circList').innerHTML=CIRCUITS.map(c=>{const t=THEMES[c.id],sw=t?`linear-gradient(135deg,${t.felt[0]},${t.felt[1]})`:'repeating-linear-gradient(45deg,#ffc44d 0 6px,#e8a52c 6px 12px)';
     const desc=c.id==='mie'?(MINE.length?`${MINE.length} ${MINE.length===1?'buca costruita':'buche costruite'} da te`:'Ancora vuoto: costruiscile con l’editor'):c.desc;
-    return`<label><input type="radio" name="circuit" value="${c.id}" id="ci_${c.id}"><span><i class="sw" style="background:${sw}"></i><b>${c.name}</b><small>${desc}</small></span></label>`}).join('');
+    return`<label><input type="radio" name="circuit" value="${c.id}" id="ci_${c.id}"><span><i class="sw" style="background:${sw}"></i><b>${c.name}${c.nuovo?'<em class="nuovo">Nuovo</em>':''}</b><small>${desc}</small></span></label>`}).join('');
 }
 function syncMenu(){
+  const np=Math.min(6,Math.max(1,+cfg.players||1));cfg.players=np;
+  const pr=document.querySelector(`#plCount input[value="${np}"]`);if(pr)pr.checked=true;
+  const pn=$('#plNames');pn.hidden=np<2;$('#plBalls').hidden=np<2;
+  const br=document.querySelector(`#plBalls input[value="${cfg.realBalls?'real':'ghost'}"]`);if(br)br.checked=true;
+  if(np>1&&pn.children.length!==np)pn.innerHTML=Array.from({length:np},(_,i)=>`<label class="pn"><i class="pdot" style="background:${PCOL[i]}"></i><input type="text" data-p="${i}" maxlength="14" value="${esc(cfg.names[i]||'')}" placeholder="Giocatore ${i+1}" aria-label="Nome del giocatore ${i+1}"></label>`).join('');
   const ci=$(`#ci_${cfg.circuit}`);if(ci)ci.checked=true;
   $('#o'+cfg.holes).checked=true;$({free:'#oFree',hl:'#oHl',lab:'#oLab'}[cfg.mode]||'#oFree').checked=true;
   $({p1:'#lP1',p2:'#lP2',f5:'#lF5'}[cfg.limit]).checked=true;$(cfg.ctrl==='meter'?'#cMeter':'#cDrag').checked=true;
@@ -967,6 +1235,24 @@ function drawBlock(c,b,th){
     if(s==='temple'){c.fillStyle='rgba(70,130,60,.55)';const r=rng(9);for(let i=0;i<20;i++){c.beginPath();c.arc(bb.x+r()*bb.w,bb.y+r()*bb.h,2+r()*4,0,TAU);c.fill()}}
     else roof(c,b.poly,'rgba(0,0,0,0)')}
   else if(s==='pyramid')roof(c,b.poly,'#d9b06a',true);
+  else if(s==='tent'){let cx=0,cy=0;b.poly.forEach(p=>{cx+=p[0];cy+=p[1]});cx/=b.poly.length;cy/=b.poly.length;let k=0;
+    for(let i=0;i<b.poly.length;i++){const a=b.poly[i],e=b.poly[(i+1)%b.poly.length],n=Math.max(2,Math.round(Math.hypot(e[0]-a[0],e[1]-a[1])/22));
+      for(let j=0;j<n;j++){c.fillStyle=k++%2?'#fff4e8':'#e8433b';c.beginPath();c.moveTo(cx,cy);c.lineTo(a[0]+(e[0]-a[0])*j/n,a[1]+(e[1]-a[1])*j/n);c.lineTo(a[0]+(e[0]-a[0])*(j+1)/n,a[1]+(e[1]-a[1])*(j+1)/n);c.closePath();c.fill()}}
+    roof(c,b.poly,'rgba(0,0,0,0)');c.fillStyle='#ffc44d';c.beginPath();c.arc(cx,cy,5,0,TAU);c.fill();
+    c.strokeStyle='#5a3b22';c.lineWidth=2;c.beginPath();c.moveTo(cx,cy);c.lineTo(cx,cy-16);c.stroke();c.fillStyle='#4fd8ff';c.beginPath();c.moveTo(cx,cy-16);c.lineTo(cx+11,cy-12);c.lineTo(cx,cy-8);c.fill()}
+  else if(s==='basalt'){roof(c,b.poly,'#2f2a29');c.beginPath();path(c,b.poly);c.clip();c.strokeStyle='rgba(0,0,0,.45)';c.lineWidth=1.5;
+    for(let y=bb.y,row=0;y<bb.y+bb.h+14;y+=13,row++)for(let x=bb.x+(row%2?11:0);x<bb.x+bb.w+22;x+=22){c.beginPath();for(let k=0;k<6;k++){const a=k*TAU/6;c.lineTo(x+Math.cos(a)*12,y+Math.sin(a)*8)}c.closePath();c.stroke()}
+    const r=rng(bb.x*3+bb.y|0);c.strokeStyle='rgba(255,120,40,.75)';c.lineWidth=2;
+    for(let i=0;i<3;i++){let x=bb.x+r()*bb.w,y=bb.y+r()*bb.h;c.beginPath();c.moveTo(x,y);for(let k=0;k<4;k++){x+=(r()-.5)*26;y+=(r()-.5)*26;c.lineTo(x,y)}c.stroke()}}
+  else if(s==='station'){roof(c,b.poly,'#9aa3bd');c.beginPath();path(c,b.poly);c.clip();c.strokeStyle='rgba(30,40,70,.35)';c.lineWidth=1.2;
+    for(let x=bb.x+16;x<bb.x+bb.w;x+=16){c.beginPath();c.moveTo(x,bb.y);c.lineTo(x,bb.y+bb.h);c.stroke()}for(let y=bb.y+16;y<bb.y+bb.h;y+=16){c.beginPath();c.moveTo(bb.x,y);c.lineTo(bb.x+bb.w,y);c.stroke()}
+    c.fillStyle='#7be3ff';for(let x=bb.x+8;x<bb.x+bb.w;x+=32)for(let y=bb.y+8;y<bb.y+bb.h;y+=32){c.beginPath();c.arc(x,y,2.2,0,TAU);c.fill()}
+    c.fillStyle='#ff6f61';c.beginPath();c.arc(bb.x+bb.w-7,bb.y+7,3,0,TAU);c.fill()}
+  else if(s==='keep'){c.fillStyle='#a8a1ba';c.beginPath();path(c,b.poly);c.fill();c.beginPath();path(c,b.poly);c.clip();
+    c.strokeStyle='rgba(40,30,60,.25)';c.lineWidth=1.2;for(let y=bb.y,row=0;y<bb.y+bb.h;y+=10,row++){c.beginPath();c.moveTo(bb.x,y);c.lineTo(bb.x+bb.w,y);c.stroke();
+      for(let x=bb.x+(row%2?10:0);x<bb.x+bb.w;x+=20){c.beginPath();c.moveTo(x,y);c.lineTo(x,y+10);c.stroke()}}
+    roof(c,b.poly,'rgba(0,0,0,0)');c.fillStyle='rgba(50,40,70,.45)';
+    for(let x=bb.x+3;x<bb.x+bb.w-6;x+=14){c.fillRect(x,bb.y+2,7,6);c.fillRect(x,bb.y+bb.h-8,7,6)}for(let y=bb.y+3;y<bb.y+bb.h-6;y+=14){c.fillRect(bb.x+2,y,6,7);c.fillRect(bb.x+bb.w-8,y,6,7)}}
   else if(s==='rock'){roof(c,b.poly,'#8a94a6');c.beginPath();path(c,b.poly);c.clip();c.strokeStyle='rgba(30,35,50,.4)';c.lineWidth=1.5;const r=rng(bb.y|0);
     for(let i=0;i<6;i++){let x=bb.x+r()*bb.w,y=bb.y+r()*bb.h;c.beginPath();c.moveTo(x,y);for(let k=0;k<3;k++){x+=(r()-.5)*30;y+=(r()-.5)*30;c.lineTo(x,y)}c.stroke()}
     c.fillStyle='rgba(245,249,255,.7)';for(let i=0;i<8;i++){c.beginPath();c.arc(bb.x+r()*bb.w,bb.y+r()*bb.h*.4,2+r()*5,0,TAU);c.fill()}}
@@ -975,8 +1261,27 @@ function drawBlock(c,b,th){
 }
 function drawDeco(c,type,x,y,s,r){
   c.save();c.translate(x,y);
-  c.fillStyle='rgba(0,0,0,.28)';c.beginPath();c.ellipse(5,s*.5,s*.75,s*.3,0,0,TAU);c.fill();
-  if(type==='pines'){for(let k=0;k<3;k++){const w=s*(1-k*.25),yy=-k*s*.45;c.fillStyle=k%2?'#2c6b52':'#245a46';c.beginPath();c.moveTo(-w*.6,yy+s*.4);c.lineTo(0,yy-s*.55);c.lineTo(w*.6,yy+s*.4);c.fill();
+  if(type!=='space'){c.fillStyle='rgba(0,0,0,.28)';c.beginPath();c.ellipse(5,s*.5,s*.75,s*.3,0,0,TAU);c.fill()}
+  if(type==='park'){if(r>.45){const cols=['#ff4fa3','#4fd8ff','#ffc44d','#7be38f','#ff6f61'];c.strokeStyle='rgba(255,255,255,.6)';c.lineWidth=1;
+      for(let k=0;k<3;k++){const bx=(k-1)*s*.32,by=-s*.55-(k%2)*s*.2;c.beginPath();c.moveTo(0,s*.4);c.lineTo(bx,by);c.stroke();c.fillStyle=cols[(k+Math.floor(r*10))%5];c.beginPath();c.ellipse(bx,by,s*.2,s*.26,0,0,TAU);c.fill();
+        c.fillStyle='rgba(255,255,255,.45)';c.beginPath();c.arc(bx-s*.06,by-s*.09,s*.06,0,TAU);c.fill()}}
+    else{c.strokeStyle='#3a3550';c.lineWidth=3;c.beginPath();c.moveTo(0,s*.4);c.lineTo(0,-s*.45);c.stroke();const g=c.createRadialGradient(0,-s*.5,0,0,-s*.5,s*.5);g.addColorStop(0,'rgba(255,240,170,.9)');g.addColorStop(1,'rgba(255,240,170,0)');
+      c.fillStyle=g;c.beginPath();c.arc(0,-s*.5,s*.5,0,TAU);c.fill();c.fillStyle='#fff6c8';c.beginPath();c.arc(0,-s*.5,s*.12,0,TAU);c.fill()}}
+  else if(type==='volcano'){if(r>.5){c.fillStyle='#4a3a33';c.beginPath();c.moveTo(-s*.6,s*.35);c.lineTo(-s*.15,-s*.35);c.lineTo(s*.15,-s*.35);c.lineTo(s*.6,s*.35);c.fill();
+      c.fillStyle='#ff7a30';c.beginPath();c.ellipse(0,-s*.35,s*.16,s*.06,0,0,TAU);c.fill();c.strokeStyle='rgba(255,120,40,.8)';c.lineWidth=2;c.beginPath();c.moveTo(-s*.05,-s*.33);c.lineTo(-s*.18,0);c.lineTo(-s*.12,s*.2);c.stroke();
+      c.fillStyle='rgba(180,170,165,.35)';for(let k=0;k<3;k++){c.beginPath();c.arc(Math.sin(k+r*9)*s*.12,-s*.55-k*s*.2,s*(.13+k*.05),0,TAU);c.fill()}}
+    else{c.fillStyle='#2b2422';c.beginPath();c.ellipse(0,0,s*.48,s*.32,r*3,0,TAU);c.fill();c.strokeStyle='rgba(255,110,40,.8)';c.lineWidth=1.6;c.beginPath();c.moveTo(-s*.3,-s*.05);c.lineTo(0,s*.05);c.lineTo(s*.25,-s*.1);c.stroke()}}
+  else if(type==='space'){if(r>.65){const g=c.createRadialGradient(-s*.15,-s*.15,1,0,0,s*.4);g.addColorStop(0,r>.82?'#ffd08a':'#9ad0ff');g.addColorStop(1,r>.82?'#b05a2a':'#2f4fa0');c.fillStyle=g;c.beginPath();c.arc(0,0,s*.4,0,TAU);c.fill();
+      if(r>.75){c.strokeStyle='rgba(255,230,180,.7)';c.lineWidth=2;c.beginPath();c.ellipse(0,0,s*.7,s*.18,-.4,0,TAU);c.stroke()}}
+    else if(r>.3){c.fillStyle='rgba(255,255,255,.9)';const k=s*.32;c.beginPath();c.moveTo(0,-k);c.lineTo(k*.18,-k*.18);c.lineTo(k,0);c.lineTo(k*.18,k*.18);c.lineTo(0,k);c.lineTo(-k*.18,k*.18);c.lineTo(-k,0);c.lineTo(-k*.18,-k*.18);c.fill()}
+    else{c.fillStyle='#6a6f82';c.beginPath();for(let k=0;k<8;k++){const a=k/8*TAU,rad=s*(.25+((k*7+r*13)%3)*.05);k?c.lineTo(Math.cos(a)*rad,Math.sin(a)*rad):c.moveTo(Math.cos(a)*rad,Math.sin(a)*rad)}c.closePath();c.fill();c.fillStyle='rgba(0,0,0,.25)';c.beginPath();c.arc(s*.05,s*.04,s*.07,0,TAU);c.fill()}
+    c.fillStyle='rgba(255,255,255,.7)';for(let k=0;k<4;k++)c.fillRect(Math.cos(k*2.3+r*20)*s*1.3,Math.sin(k*1.7+r*20)*s*1.1,1.5,1.5)}
+  else if(type==='castle'){if(r>.5){c.fillStyle='#a8a1ba';c.beginPath();c.arc(0,0,s*.36,0,TAU);c.fill();c.fillStyle='#3f5fb0';c.beginPath();c.moveTo(-s*.36,0);c.lineTo(0,-s*.75);c.lineTo(s*.36,0);c.fill();
+      c.fillStyle='rgba(0,0,0,.18)';c.beginPath();c.moveTo(0,-s*.75);c.lineTo(s*.36,0);c.lineTo(0,0);c.fill();c.strokeStyle='#5a3b22';c.lineWidth=1.5;c.beginPath();c.moveTo(0,-s*.75);c.lineTo(0,-s*1.05);c.stroke();
+      c.fillStyle='#e8433b';c.beginPath();c.moveTo(0,-s*1.05);c.lineTo(s*.3,-s*.97);c.lineTo(0,-s*.88);c.fill()}
+    else{c.fillStyle='#2c7a3c';c.beginPath();c.arc(0,0,s*.38,0,TAU);c.fill();c.fillStyle='#3f9a50';c.beginPath();c.arc(-s*.1,-s*.12,s*.24,0,TAU);c.fill();
+      if(r>.25){c.fillStyle='#ff9ac2';for(let k=0;k<4;k++){c.beginPath();c.arc(Math.cos(k*1.6+r*5)*s*.22,Math.sin(k*1.6+r*5)*s*.22,2,0,TAU);c.fill()}}}}
+  else if(type==='pines'){for(let k=0;k<3;k++){const w=s*(1-k*.25),yy=-k*s*.45;c.fillStyle=k%2?'#2c6b52':'#245a46';c.beginPath();c.moveTo(-w*.6,yy+s*.4);c.lineTo(0,yy-s*.55);c.lineTo(w*.6,yy+s*.4);c.fill();
       c.fillStyle='#eef4fb';c.beginPath();c.moveTo(-w*.18,yy-s*.25);c.lineTo(0,yy-s*.55);c.lineTo(w*.18,yy-s*.25);c.fill()}}
   else if(type==='palms'){c.strokeStyle='#8a6136';c.lineWidth=4;c.beginPath();c.moveTo(0,s*.4);c.quadraticCurveTo(s*.3,0,s*.1,-s*.5);c.stroke();
     c.strokeStyle='#2f9a5a';c.lineWidth=4;for(let k=0;k<6;k++){const a=k/6*TAU+r;c.beginPath();c.moveTo(s*.1,-s*.5);c.quadraticCurveTo(s*.1+Math.cos(a)*s*.5,-s*.5+Math.sin(a)*s*.2-s*.2,s*.1+Math.cos(a)*s*.85,-s*.5+Math.sin(a)*s*.45);c.stroke()}}
@@ -1006,6 +1311,25 @@ function renderStatic(){
   c.save();c.translate(7,10);c.fillStyle='rgba(0,0,0,.4)';c.beginPath();h.areas.forEach(p=>path(c,p));c.fill();c.restore();
   if(PH.on&&PH.mat.campo!=='moquette')paintMat(c,h.areas,PH.mat.campo,th);else grass(c,h.areas,th);
   c.save();c.beginPath();h.areas.forEach(p=>path(c,p));c.clip();
+  // terraces, lowest first: shadow on the floor below, lighter top, rock face on the edges facing the viewer
+  const cliffC=th.cliff||'#6b5a48';
+  const terrPaint=t=>{if(t.dry)grass(c,[R(t.x,t.y,t.w,t.h)],th);
+    c.fillStyle=`rgba(255,255,255,${.1+.07*t.lv})`;c.fillRect(t.x,t.y,t.w,t.h);
+    h.cliffs.forEach(cl=>{if(cl.t!==t)return;
+      if(cl.half>3){const vert=cl.nx!==0,x=Math.min(cl.x1,cl.x2),y=Math.min(cl.y1,cl.y2),w=vert?cl.half:Math.abs(cl.x2-cl.x1),hh=vert?Math.abs(cl.y2-cl.y1):cl.half;
+        c.fillStyle='rgba(0,0,0,.28)';if(vert)c.fillRect(x+w,y+4,8,hh);else c.fillRect(x+4,y+hh,w,8);
+        const g=vert?c.createLinearGradient(x,0,x+w,0):c.createLinearGradient(0,y,0,y+hh);g.addColorStop(0,'rgba(255,255,255,.18)');g.addColorStop(1,'rgba(0,0,0,.5)');
+        c.fillStyle=cliffC;c.fillRect(x,y,w,hh);c.fillStyle=g;c.fillRect(x,y,w,hh);
+        c.strokeStyle='rgba(0,0,0,.28)';c.lineWidth=1;for(let q=4;q<cl.half;q+=4){c.beginPath();if(vert){c.moveTo(x+q,y);c.lineTo(x+q,y+hh)}else{c.moveTo(x,y+q);c.lineTo(x+w,y+q)}c.stroke()}
+        for(let q=(vert?y:x)+10;q<(vert?y+hh:x+w);q+=22){c.beginPath();if(vert){c.moveTo(x,q);c.lineTo(x+w,q)}else{c.moveTo(q,y);c.lineTo(q,y+hh)}c.stroke()}}
+      c.strokeStyle=cl.half>3?'rgba(255,255,255,.35)':'rgba(255,255,255,.6)';c.lineWidth=3;c.beginPath();c.moveTo(cl.x1-cl.nx*1.5,cl.y1-cl.ny*1.5);c.lineTo(cl.x2-cl.nx*1.5,cl.y2-cl.ny*1.5);c.stroke()})};
+  const stairPaint=s=>{const[dx,dy]=DIRS[s.dir],cx=s.x+s.w/2,cy=s.y+s.h/2,L=(dx?s.w:s.h)/2;c.save();c.beginPath();c.rect(s.x,s.y,s.w,s.h);c.clip();
+    c.fillStyle=th.felt[1];c.fillRect(s.x,s.y,s.w,s.h);
+    const g=c.createLinearGradient(cx-dx*L,cy-dy*L,cx+dx*L,cy+dy*L);g.addColorStop(0,'rgba(0,0,0,.28)');g.addColorStop(1,'rgba(255,255,255,.3)');c.fillStyle=g;c.fillRect(s.x,s.y,s.w,s.h);
+    for(let q=0;q<L*2;q+=11){const lx=dx?(dx>0?s.x+q:s.x+s.w-q):0,ly=dy?(dy>0?s.y+q:s.y+s.h-q):0;
+      c.strokeStyle='rgba(0,0,0,.28)';c.lineWidth=2;c.beginPath();if(dx){c.moveTo(lx,s.y);c.lineTo(lx,s.y+s.h)}else{c.moveTo(s.x,ly);c.lineTo(s.x+s.w,ly)}c.stroke();
+      c.strokeStyle='rgba(255,255,255,.22)';c.lineWidth=1.5;c.beginPath();if(dx){c.moveTo(lx+dx*2,s.y);c.lineTo(lx+dx*2,s.y+s.h)}else{c.moveTo(s.x,ly+dy*2);c.lineTo(s.x+s.w,ly+dy*2)}c.stroke()}
+    c.restore();c.strokeStyle='rgba(0,0,0,.3)';c.lineWidth=2;c.strokeRect(s.x,s.y,s.w,s.h)};
   h.slopes.forEach(s=>{if(s.hidden||s.pad)return;const bb=bbox(s.poly),m=Math.hypot(s.ax,s.ay),ux=s.ax/m,uy=s.ay/m,cx=bb.x+bb.w/2,cy=bb.y+bb.h/2,L=Math.max(bb.w,bb.h)/2;
     const g=c.createLinearGradient(cx-ux*L,cy-uy*L,cx+ux*L,cy+uy*L);
     if(s.cur){g.addColorStop(0,'rgba(120,200,255,.16)');g.addColorStop(1,'rgba(40,110,200,.22)')}else{g.addColorStop(0,'rgba(255,255,255,.10)');g.addColorStop(1,'rgba(0,30,10,.16)')}
@@ -1025,7 +1349,7 @@ function renderStatic(){
   if(PH.on&&h.sand.length)paintMat(c,h.sand,PH.mat.ruvido,th);else h.sand.forEach(p=>{c.fillStyle=th.rough;c.beginPath();path(c,p);c.fill();const bb=bbox(p),r2=rng(3);
     c.fillStyle=th.speck;for(let i=0;i<bb.w*bb.h/40;i++)c.fillRect(bb.x+r2()*bb.w,bb.y+r2()*bb.h,1.6,1.6);
     c.strokeStyle='rgba(255,255,255,.3)';c.lineWidth=2;c.beginPath();path(c,p);c.stroke()});
-  h.quick.forEach(q=>{const g=c.createRadialGradient(q.x,q.y,0,q.x,q.y,q.r);g.addColorStop(0,'rgba(60,35,10,.85)');g.addColorStop(.35,th.quick);g.addColorStop(1,th.rough);
+  h.quick.forEach(q=>{const g=c.createRadialGradient(q.x,q.y,0,q.x,q.y,q.r);g.addColorStop(0,th.quickCore||'rgba(60,35,10,.85)');g.addColorStop(.35,th.quick);g.addColorStop(1,th.rough);
     c.fillStyle=g;c.beginPath();c.arc(q.x,q.y,q.r,0,TAU);c.fill()});
   const hz=(p,cols,edge)=>{const bb=bbox(p),g=c.createLinearGradient(bb.x,bb.y,bb.x+bb.w,bb.y+bb.h);g.addColorStop(0,cols[0]);g.addColorStop(1,cols[1]);
     c.fillStyle=g;c.beginPath();path(c,p);c.fill();
@@ -1037,6 +1361,9 @@ function renderStatic(){
   h.islands.forEach(p=>{c.strokeStyle=th.rough;c.lineWidth=10;c.beginPath();path(c,p);c.stroke()});
   c.restore();
   if(h.islands.length){if(PH.on&&PH.mat.campo!=='moquette')paintMat(c,h.islands,PH.mat.campo,th);else grass(c,h.islands,th)}
+  // terraces go over the floor features as a lighter layer, so what lies on top of them stays visible
+  c.save();c.beginPath();h.areas.forEach(p=>path(c,p));c.clip();
+  h.terr.forEach(t=>{c.fillStyle=t.dry?'rgba(0,10,30,.35)':'rgba(0,0,0,.3)';c.save();c.beginPath();c.rect(0,0,W,H);c.rect(t.x,t.y,t.w,t.h);c.clip('evenodd');c.fillRect(t.x+8,t.y+13,t.w,t.h);c.restore();terrPaint(t)});h.stairs.forEach(stairPaint);c.restore();
   h.ramps.forEach(r2=>{const[dx,dy]=DIRS[r2.dir],x1=r2.x+r2.w/2+dx*r2.w/2,y1=r2.y+r2.h/2+dy*r2.h/2,x0=r2.x+r2.w/2-dx*r2.w/2,y0=r2.y+r2.h/2-dy*r2.h/2;
     c.save();c.fillStyle='rgba(0,0,0,.3)';c.fillRect(r2.x+4,r2.y+6,r2.w,r2.h);
     const g=c.createLinearGradient(x0,y0,x1,y1);g.addColorStop(0,'rgba(0,0,0,.25)');g.addColorStop(1,'rgba(255,255,255,.45)');
@@ -1096,6 +1423,13 @@ function drawBumper(c,bp,th){
     else{c.fillStyle='rgba(30,100,50,.82)';c.beginPath();c.arc(0,0,r*1.7,0,TAU);c.fill();c.fillStyle='rgba(70,150,80,.75)';c.beginPath();c.arc(-r*.4,-r*.4,r*.9,0,TAU);c.fill()}}
   else if(st==='cactus'){c.fillStyle='#4f8f4a';c.beginPath();c.arc(0,0,r,0,TAU);c.fill();c.strokeStyle='#2f6a33';c.lineWidth=1.5;for(let k=0;k<8;k++){const a=k/8*TAU;c.beginPath();c.moveTo(0,0);c.lineTo(Math.cos(a)*r,Math.sin(a)*r);c.stroke()}
     c.fillStyle='#f4e9b8';for(let k=0;k<12;k++){const a=k/12*TAU+.2;c.fillRect(Math.cos(a)*r*.75-1,Math.sin(a)*r*.75-1,2,2)}c.fillStyle='#ff7aa8';c.beginPath();c.arc(0,0,3,0,TAU);c.fill()}
+  else if(st==='ember'){c.fillStyle='#2b2422';c.beginPath();c.arc(0,0,rr,0,TAU);c.fill();const g=c.createRadialGradient(0,0,0,0,0,rr*.75);g.addColorStop(0,f>0?'#fff2a8':'#ffd25a');g.addColorStop(.6,'#ff6a1f');g.addColorStop(1,'rgba(255,60,20,0)');
+    c.fillStyle=g;c.beginPath();c.arc(0,0,rr*.75,0,TAU);c.fill();c.strokeStyle='rgba(255,140,60,.6)';c.lineWidth=1.5;for(let k=0;k<5;k++){const a=k/5*TAU;c.beginPath();c.moveTo(Math.cos(a)*rr*.5,Math.sin(a)*rr*.5);c.lineTo(Math.cos(a+.3)*rr,Math.sin(a+.3)*rr);c.stroke()}}
+  else if(st==='planet'){c.strokeStyle='rgba(255,220,150,.8)';c.lineWidth=3;c.beginPath();c.ellipse(0,0,rr*1.55,rr*.45,-.35,0,TAU);c.stroke();
+    const g=c.createRadialGradient(-rr*.35,-rr*.35,1,0,0,rr);g.addColorStop(0,f>0?'#ffd0f0':'#f6a6d8');g.addColorStop(1,'#7a3fb0');c.fillStyle=g;c.beginPath();c.arc(0,0,rr,0,TAU);c.fill();
+    c.fillStyle='rgba(255,255,255,.18)';c.fillRect(-rr,-rr*.2,rr*2,rr*.18);c.strokeStyle='rgba(255,220,150,.9)';c.beginPath();c.ellipse(0,0,rr*1.55,rr*.45,-.35,-.2,Math.PI+.2);c.stroke()}
+  else if(st==='shield'){c.fillStyle='#e8c25a';c.beginPath();c.arc(0,0,rr,0,TAU);c.fill();c.fillStyle=f>0?'#5b8cff':'#2f5fd0';c.beginPath();c.arc(0,0,rr*.82,0,TAU);c.fill();
+    c.fillStyle='#e8c25a';c.fillRect(-rr*.82,-rr*.16,rr*1.64,rr*.32);c.fillRect(-rr*.16,-rr*.82,rr*.32,rr*1.64);c.fillStyle='#d8433b';c.beginPath();c.arc(0,0,rr*.25,0,TAU);c.fill()}
   else if(st==='mast'){c.fillStyle='#6e4524';c.beginPath();c.arc(0,0,r,0,TAU);c.fill();c.fillStyle='#f5ecd6';c.fillRect(-r*2.2,-3,r*4.4,6);c.fillStyle='#8a5a33';c.beginPath();c.arc(0,0,r*.5,0,TAU);c.fill()}
   else{const g=c.createRadialGradient(-r*.35,-r*.4,1,0,0,r);g.addColorStop(0,'#fff6e6');g.addColorStop(1,'#b9ab90');c.fillStyle=g;c.beginPath();c.arc(0,0,r,0,TAU);c.fill()}
   c.restore();
@@ -1116,6 +1450,17 @@ function drawMover(c,m,t){
     const hx=horiz?w/2-8:0,hy=horiz?0:-h/2+8;c.fillStyle='#fff';c.beginPath();c.arc(hx-(horiz?0:4),hy-(horiz?4:0),2.5,0,TAU);c.arc(hx+(horiz?0:4),hy+(horiz?4:0),2.5,0,TAU);c.fill()}
   else if(st==='scorpion'){c.fillStyle='#5a3a24';c.beginPath();c.ellipse(0,4,w*.32,h*.4,0,0,TAU);c.fill();c.strokeStyle='#5a3a24';c.lineWidth=4;c.beginPath();c.moveTo(0,h*.35);c.quadraticCurveTo(w*.5,h*.6,w*.25,-h*.1);c.stroke();
     c.fillStyle='#d9a441';c.beginPath();c.arc(w*.25,-h*.1,3.5,0,TAU);c.fill();c.fillStyle='#5a3a24';c.beginPath();c.arc(-w*.35,-h*.4,6,0,TAU);c.arc(w*.05,-h*.48,6,0,TAU);c.fill()}
+  else if(st==='car'){const cols=['#ff4fa3','#4fd8ff','#7be38f','#ffc44d','#8b7bff'],col=cols[Math.abs(Math.round(m.cx+m.cy))%5];
+    c.fillStyle='#222';c.beginPath();c.roundRect?c.roundRect(-w/2,-h/2,w,h,Math.min(w,h)*.4):c.rect(-w/2,-h/2,w,h);c.fill();
+    c.fillStyle=col;c.beginPath();c.roundRect?c.roundRect(-w/2+3,-h/2+3,w-6,h-6,Math.min(w,h)*.32):c.rect(-w/2+3,-h/2+3,w-6,h-6);c.fill();
+    c.fillStyle='rgba(255,255,255,.35)';c.beginPath();c.ellipse(-w*.12,-h*.15,w*.22,h*.14,0,0,TAU);c.fill();c.fillStyle='#333';c.beginPath();c.arc(w*.12,h*.05,Math.min(w,h)*.16,0,TAU);c.fill();
+    c.strokeStyle='#ddd';c.lineWidth=2;c.beginPath();c.moveTo(w*.12,h*.05);c.lineTo(w*.12,-h*.45);c.stroke();c.fillStyle='#ffe680';c.beginPath();c.arc(w*.12,-h*.45,2.5,0,TAU);c.fill()}
+  else if(st==='ufo'){c.fillStyle='#9aa6c4';c.beginPath();c.ellipse(0,0,w/2,h/2,0,0,TAU);c.fill();c.fillStyle='#d6dcec';c.beginPath();c.ellipse(-w*.05,-h*.08,w*.42,h*.36,0,0,TAU);c.fill();
+    c.fillStyle='rgba(120,230,255,.85)';c.beginPath();c.arc(0,0,Math.min(w,h)*.26,0,TAU);c.fill();c.fillStyle='rgba(255,255,255,.7)';c.beginPath();c.arc(-3,-3,Math.min(w,h)*.08,0,TAU);c.fill();
+    for(let k=0;k<8;k++){const a=k/8*TAU+t*3;c.fillStyle=k%2?'#ffe680':'#ff6f61';c.beginPath();c.arc(Math.cos(a)*w*.42,Math.sin(a)*h*.4,2.2,0,TAU);c.fill()}}
+  else if(st==='gate'){c.fillStyle='rgba(40,30,25,.35)';c.fillRect(-w/2,-h/2,w,h);c.strokeStyle='#3b3a40';c.lineWidth=4;
+    for(let x=-w/2+3;x<=w/2-2;x+=Math.max(7,w/5)){c.beginPath();c.moveTo(x,-h/2);c.lineTo(x,h/2);c.stroke()}for(let y=-h/2+3;y<=h/2-2;y+=Math.max(7,h/5)){c.beginPath();c.moveTo(-w/2,y);c.lineTo(w/2,y);c.stroke()}
+    c.strokeStyle='#8a8790';c.lineWidth=1.2;c.strokeRect(-w/2+1,-h/2+1,w-2,h-2)}
   else if(st==='camel'){c.fillStyle='#c9965a';c.beginPath();c.ellipse(0,0,w*.42,h*.42,0,0,TAU);c.fill();c.fillStyle='#b07c42';c.beginPath();c.arc(-w*.1,0,h*.3,0,TAU);c.fill();
     c.fillStyle='#c9965a';c.beginPath();c.arc(w*.52,-h*.2,h*.22,0,TAU);c.fill();c.fillStyle='#d8433b';c.fillRect(-w*.32,-h*.42,w*.18,h*.84)}
   else{c.fillStyle='#f0b43c';c.fillRect(-w/2,-h/2,w,h);c.save();c.beginPath();c.rect(-w/2,-h/2,w,h);c.clip();c.strokeStyle='#3a2a14';c.lineWidth=5;for(let q=-h;q<h+w;q+=14){c.beginPath();c.moveTo(-w/2+q,-h/2);c.lineTo(-w/2+q-h,h/2);c.stroke()}c.restore();
@@ -1130,6 +1475,10 @@ function drawMill(c,m,t){
       for(let q=m.hub+16;q<m.len;q+=11){c.beginPath();c.moveTo(q,-7);c.lineTo(q,7);c.stroke()}c.strokeStyle='#5a3b22';c.lineWidth=3.5;c.beginPath();c.moveTo(m.hub,0);c.lineTo(m.len+2,0);c.stroke()}
     else if(st==='turbine'){c.fillStyle='#f4f7fb';c.beginPath();c.moveTo(m.hub,-6);c.quadraticCurveTo(m.len*.5,-9,m.len,-1.5);c.lineTo(m.len,1.5);c.quadraticCurveTo(m.len*.5,4,m.hub,6);c.fill();c.strokeStyle='rgba(120,140,170,.6)';c.lineWidth=1;c.stroke();
       c.fillStyle='#e8505b';c.fillRect(m.len-10,-2,10,4)}
+    else if(st==='carousel'){const cols=['#ff4fa3','#4fd8ff','#ffc44d','#7be38f','#8b7bff','#ff6f61','#ffffff','#f0b43c'];c.strokeStyle='#ffe9a8';c.lineWidth=6;c.beginPath();c.moveTo(m.hub,0);c.lineTo(m.len-8,0);c.stroke();
+      c.strokeStyle='rgba(180,60,120,.6)';c.lineWidth=2;c.setLineDash([4,4]);c.stroke();c.setLineDash([]);c.fillStyle=cols[i%cols.length];c.beginPath();c.arc(m.len-7,0,8,0,TAU);c.fill();c.fillStyle='rgba(255,255,255,.5)';c.beginPath();c.arc(m.len-9,-2,3,0,TAU);c.fill()}
+    else if(st==='satellite'){c.strokeStyle='#c4cde3';c.lineWidth=4;c.beginPath();c.moveTo(m.hub,0);c.lineTo(m.len,0);c.stroke();const p0=m.hub+(m.len-m.hub)*.35;
+      c.fillStyle='#2f5fd0';c.fillRect(p0,-9,m.len-p0,18);c.strokeStyle='rgba(200,230,255,.55)';c.lineWidth=1;for(let q=p0+8;q<m.len;q+=8){c.beginPath();c.moveTo(q,-9);c.lineTo(q,9);c.stroke()}c.beginPath();c.moveTo(p0,0);c.lineTo(m.len,0);c.stroke()}
     else if(st==='beam'){const g=c.createLinearGradient(m.hub,0,m.len+40,0);g.addColorStop(0,'rgba(255,240,150,.45)');g.addColorStop(1,'rgba(255,240,150,0)');c.fillStyle=g;c.beginPath();c.moveTo(m.hub,-5);c.lineTo(m.len+40,-26);c.lineTo(m.len+40,26);c.lineTo(m.hub,5);c.fill();
       c.fillStyle='#39424f';c.fillRect(m.hub,-5,m.len-m.hub,10);c.fillStyle='#ffd23f';c.fillRect(m.len-6,-5,6,10)}
     else{c.strokeStyle=st==='helm'?'#6e4524':'#6b4a2e';c.lineWidth=7;c.beginPath();c.moveTo(m.hub,0);c.lineTo(m.len-2,0);c.stroke();c.strokeStyle='rgba(255,255,255,.2)';c.lineWidth=2;c.beginPath();c.moveTo(m.hub,-2);c.lineTo(m.len-2,-2);c.stroke();
@@ -1138,6 +1487,10 @@ function drawMill(c,m,t){
   if(st==='beam'){c.fillStyle='#fff';c.beginPath();c.arc(m.x,m.y,m.hub+3,0,TAU);c.fill();c.fillStyle='#d8433b';for(let k=0;k<3;k++){c.beginPath();c.arc(m.x,m.y,m.hub+3-k*(m.hub/3),0,TAU);c.fill();c.fillStyle=k%2?'#d8433b':'#fff'}
     c.fillStyle='#ffe680';c.beginPath();c.arc(m.x,m.y,m.hub*.3,0,TAU);c.fill()}
   else if(st==='turbine'){c.fillStyle='#dfe6ef';c.beginPath();c.arc(m.x,m.y,m.hub,0,TAU);c.fill();c.fillStyle='#fff';c.beginPath();c.arc(m.x-2,m.y-2,m.hub*.6,0,TAU);c.fill()}
+  else if(st==='carousel'){for(let k=0;k<8;k++){c.fillStyle=k%2?'#fff4e8':'#e8433b';c.beginPath();c.moveTo(m.x,m.y);c.arc(m.x,m.y,m.hub+5,m.speed*t+k*TAU/8,m.speed*t+(k+1)*TAU/8);c.fill()}
+    c.fillStyle='#ffc44d';c.beginPath();c.arc(m.x,m.y,m.hub*.4,0,TAU);c.fill()}
+  else if(st==='satellite'){c.fillStyle='#c4cde3';c.beginPath();c.arc(m.x,m.y,m.hub+2,0,TAU);c.fill();c.fillStyle='#e8c25a';c.beginPath();c.arc(m.x-1.5,m.y-1.5,m.hub-2,0,TAU);c.fill();
+    c.fillStyle='#ff6f61';c.beginPath();c.arc(m.x,m.y,2.5,0,TAU);c.fill()}
   else{c.fillStyle='#5a3b22';c.beginPath();c.arc(m.x,m.y,m.hub+3,0,TAU);c.fill();c.fillStyle=st==='helm'?'#b07c42':'#c79560';c.beginPath();c.arc(m.x-1.5,m.y-1.5,m.hub-2,0,TAU);c.fill()}
 }
 function draw(){
@@ -1148,7 +1501,7 @@ function draw(){
   h.water.forEach(p=>{const bb=bbox(p);c.save();c.beginPath();h.areas.forEach(q=>path(c,q));c.clip();c.beginPath();path(c,p);c.clip();c.strokeStyle='rgba(255,255,255,.16)';c.lineWidth=1.6;
     for(let y=bb.y+6;y<bb.y+bb.h;y+=16){c.beginPath();for(let x=bb.x;x<=bb.x+bb.w;x+=10){const yy=y+Math.sin(x*.05+t*2+y*.3)*3;x===bb.x?c.moveTo(x,yy):c.lineTo(x,yy)}c.stroke()}c.restore()});
   if(h.water.length)h.dry.forEach(p=>{const bb=bbox(p),k=sc.width/W;c.drawImage(sc,bb.x*k,bb.y*k,bb.w*k,bb.h*k,bb.x,bb.y,bb.w,bb.h)});
-  h.quick.forEach(q=>{c.save();c.beginPath();h.areas.forEach(a=>path(c,a));c.clip();c.translate(q.x,q.y);c.rotate(t*1.2);c.strokeStyle='rgba(60,35,10,.35)';c.lineWidth=2;
+  h.quick.forEach(q=>{c.save();c.beginPath();h.areas.forEach(a=>path(c,a));c.clip();c.translate(q.x,q.y);c.rotate(t*1.2);c.strokeStyle=th.swirl||'rgba(60,35,10,.35)';c.lineWidth=2;
     for(let k=0;k<3;k++){c.beginPath();for(let a=0;a<TAU*1.2;a+=.2){const rr=q.r*.15+a/(TAU*1.2)*q.r*.8;const x=Math.cos(a+k*TAU/3)*rr,y=Math.sin(a+k*TAU/3)*rr;a?c.lineTo(x,y):c.moveTo(x,y)}c.stroke()}c.restore()});
   h.slopes.forEach(s=>{if(s.hidden)return;const bb=bbox(s.poly),m=Math.hypot(s.ax,s.ay);c.save();c.beginPath();path(c,s.poly);c.clip();
     c.translate(bb.x+bb.w/2,bb.y+bb.h/2);c.rotate(Math.atan2(s.ay,s.ax));const R2=Math.hypot(bb.w,bb.h)/2;
@@ -1162,7 +1515,9 @@ function draw(){
   const canopy=bp=>{const s=bp.style||(bp.bouncy?th.bouncy:th.post);return s==='palm'||s==='tree'};
   h.bumpers.forEach(bp=>{if(!canopy(bp))drawBumper(c,bp,th)});
   G.rings.forEach(r=>{const k=r.life/r.max;c.strokeStyle=`rgba(${r.color},${k*.8})`;c.lineWidth=3*k+1;c.beginPath();c.arc(r.x,r.y,r.r+(1-k)*r.grow,0,TAU);c.stroke()});
+  if(G.multi)drawPlayers(c);
   drawBall(c);
+  if(G.multi&&!G.ball.hidden&&!G.ball.sink&&curP()){c.strokeStyle=curP().color;c.lineWidth=2.5;c.beginPath();c.arc(G.ball.x,G.ball.y,BALL_R+2.5,0,TAU);c.stroke()}
   h.bumpers.forEach(bp=>{if(canopy(bp))drawBumper(c,bp,th)});
   h.mills.forEach(m=>drawMill(c,m,t));
   drawFlag(c);
@@ -1180,6 +1535,13 @@ function draw(){
     else{c.globalCompositeOperation='lighter';c.globalAlpha=k;c.fillStyle=p.color;c.beginPath();c.arc(p.x,p.y,p.size*(.6+k*.6),0,TAU);c.fill();c.globalCompositeOperation='source-over'}});
   c.globalAlpha=1;
   if(G.flash>0){c.fillStyle=`rgba(255,250,235,${G.flash})`;c.fillRect(0,0,view.cw,view.ch)}
+}
+// other players' balls wait where they stopped; they are markers only and do not collide
+function drawPlayers(c){
+  G.players.forEach((P,i)=>{if(i===G.turn||P.done||P.out||!P.strokes||!P.ball||P.ball.hidden)return;const b=P.ball;
+    c.fillStyle='rgba(0,0,0,.25)';c.beginPath();c.arc(b.x+2,b.y+3,BALL_R,0,TAU);c.fill();
+    c.globalAlpha=cfg.realBalls?1:.55;c.fillStyle='#fff';c.beginPath();c.arc(b.x,b.y,BALL_R,0,TAU);c.fill();c.globalAlpha=1;
+    c.strokeStyle=P.color;c.lineWidth=2.5;c.beginPath();c.arc(b.x,b.y,BALL_R+2,0,TAU);c.stroke()});
 }
 function drawBall(c){
   const b=G.ball;if(b.hidden&&!b.sink)return;
@@ -1228,7 +1590,7 @@ function drawAim(c,labels){
     const e=pts[pts.length-1];
     if(g.end==='cup'){c.strokeStyle='#7be38f';c.lineWidth=3;c.beginPath();c.arc(h.cup.x,h.cup.y,CUP_R+6,0,TAU);c.stroke();labels.push({x:h.cup.x,y:h.cup.y-30,t:'In buca!',strong:true,color:'#7be38f'})}
     else if(g.end==='water'||g.end==='chasm'||g.end==='quick'){c.strokeStyle='#ff6f61';c.lineWidth=3;c.beginPath();c.moveTo(e[0]-7,e[1]-7);c.lineTo(e[0]+7,e[1]+7);c.moveTo(e[0]+7,e[1]-7);c.lineTo(e[0]-7,e[1]+7);c.stroke();
-      labels.push({x:e[0],y:e[1]-22,t:g.end==='quick'?'Sabbie mobili':g.end==='water'?'Acqua':theme().chasmMsg.split('!')[0],strong:true,color:'#ff6f61'})}
+      labels.push({x:e[0],y:e[1]-22,t:g.end==='quick'?(theme().quickName||'Sabbie mobili'):g.end==='water'?(theme().waterName||'Acqua'):theme().chasmMsg.split('!')[0],strong:true,color:'#ff6f61'})}
     else{c.fillStyle='rgba(255,255,255,.9)';c.beginPath();c.arc(e[0],e[1],5,0,TAU);c.fill()}
   }
   const ex=b.x+dx*dist,ey=b.y+dy*dist;
@@ -1245,10 +1607,10 @@ function drawAim(c,labels){
 // ---------- update loop ----------
 let last=performance.now();
 function update(dt){
-  G.acc+=dt;let n=0;while(G.acc>=STEP&&n<40){physics(STEP);G.acc-=STEP;n++}
+  G.acc+=dt;let n=0;while(G.acc>=STEP&&n<40){physics(STEP);if(G.multi&&cfg.realBalls&&G.screen!=='over')stepOthers(STEP);G.acc-=STEP;n++}
   const b=G.ball;
   if(G.screen==='play'){
-    if(G.moving){const still=!b.sink&&!b.hidden&&b.vx===0&&b.vy===0&&b.z===0;
+    if(G.moving){const still=!b.sink&&!b.hidden&&b.vx===0&&b.vy===0&&b.z===0&&othersStill();
       if(still){G.restT+=dt;if(G.restT>.3)afterRest()}else G.restT=0;
       G.shotT+=dt;if(G.shotT>40){b.vx=b.vy=0}}
     else if(!b.sink&&!b.hidden&&(b.vx||b.vy||b.z)){G.moving=true;G.restT=0;G.shotT=0;G.aim=null;setHint()}
@@ -1273,7 +1635,7 @@ function lockMeter(){const a=G.aim;if(a&&a.phase==='meter')shoot(a.dir[0],a.dir[
 cv.addEventListener('pointerdown',e=>{
   audio();
   if(G.screen==='edit'){edDown(e);return}
-  if(G.screen==='between'){const t=G.timers.find(x=>x.fn===nextHole);if(t&&t.skippable!=null)nextHole();return}
+  if(G.screen==='between'){const t=G.timers.find(x=>x.skippable!=null);if(t){G.timers=G.timers.filter(x=>x!==t);t.fn()}return}
   if(G.aim&&G.aim.phase==='meter'){lockMeter();return}
   if(!canAim())return;
   const[X,Y]=evPos(e),b=G.ball,[bx,by]=toScreen(b.x,b.y);
@@ -1311,6 +1673,9 @@ function setCtrl(v){cfg.ctrl=v;saveCfg();$(v==='meter'?'#c2meter':'#c2drag').che
 document.querySelectorAll('input[name=ctrl2]').forEach(i=>i.addEventListener('change',()=>{sfx.ui();setCtrl(i.value)}));
 $('#ovMenu').addEventListener('change',e=>{
   const i=e.target;if(i.tagName!=='INPUT')return;
+  if(i.type==='text'){cfg.names[+i.dataset.p]=i.value.trim();saveCfg();return}
+  if(i.name==='balls'){cfg.realBalls=i.value==='real';saveCfg();sfx.ui();return}
+  if(i.name==='players'){cfg.players=+i.value;$('#bResume').hidden=true;saveCfg();syncMenu();sfx.ui();return}
   audio();sfx.ui();const v=i.value;
   if(i.name==='circuit'){cfg.circuit=v;if(!G.started&&HOLES().length){G.scores=[];loadHole(0)}}
   else if(i.name==='holes')cfg.holes=+v;else if(i.name==='mode')cfg.mode=v;else if(i.name==='limit')cfg.limit=v;
@@ -1555,7 +1920,7 @@ const TOOLS=[
  ['bridge','Ponte','#bf8a55','Trascina un ponte con le sponde laterali, da mettere sopra acqua o burroni.'],
  ['mover','Ostacolo mobile','#f0b43c','Trascina un blocco che va avanti e indietro.'],
  ['tunnel','Tubo','#d98b4a','Trascina dall’entrata all’uscita del tubo.'],
- ['erase','Gomma','#ff6f61','Clicca un oggetto per eliminarlo.'],
+ ['erase','Gomma','#ff6f61','Clicca un oggetto per eliminarlo, oppure usa l’elenco “Oggetti nella buca” a destra.'],
 ];
 const THNAME={borgo:'Borgo dei mulini',montagna:'Alta montagna',mare:'Baia del faro',giungla:'Giungla',deserto:'Mare di dune'};
 const TNAME={area:'Campo',wall:'Sponda',block:'Blocco',water:'Acqua',chasm:'Burrone',sand:'Terreno ruvido',ice:'Ghiaccio',quick:'Sabbie mobili',slope:'Pendenza',hill:'Collina / conca',bumper:'Paracolpi',mill:'Mulino',ramp:'Saltino',bridge:'Ponte',mover:'Ostacolo mobile',tunnel:'Tubo'};
@@ -1617,7 +1982,7 @@ function edRequest(){if(ED.req)return;ED.req=true;requestAnimationFrame(()=>{ED.
 function pushUndo(){ED.undo.push(JSON.stringify(ED.doc));if(ED.undo.length>80)ED.undo.shift()}
 function edUndo(){const s=ED.undo.pop();if(!s)return;ED.doc=JSON.parse(s);ED.sel=null;ED.poly=null;edRebuild();renderEdUI()}
 function openEditor(doc){
-  G.screen='edit';G.started=false;G.testing=false;G.timers=[];G.fx=[];G.fwq=[];
+  G.screen='edit';G.started=false;G.testing=false;G.multi=false;$('#app').classList.remove('multi');G.timers=[];G.fx=[];G.fwq=[];
   $('#ovMenu').hidden=true;$('#ovCard').hidden=true;$('#lab').hidden=true;$('#bEdit').hidden=true;$('#bLab').hidden=true;
   $('#app').classList.add('editing');$('#edTools').hidden=false;$('#edSide').hidden=false;$('#edHint').hidden=false;
   if(doc)ED.doc=JSON.parse(JSON.stringify(doc));if(!ED.doc)ED.doc=newDoc();
@@ -1803,12 +2168,17 @@ function buildEditor(){
   $('#edProps').addEventListener('focusin',e=>{if(e.target.matches('input,select'))pushUndo()});
   $('#edProps').addEventListener('input',onProp);$('#edProps').addEventListener('change',onProp);
   $('#edProps').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;sfx.ui();if(b.dataset.act==='dup')dupSel();else if(b.dataset.act==='del')delSel()});
+  $('#edItems').addEventListener('click',e=>{const b=e.target.closest('[data-act]');if(!b)return;const it=ED.doc.items[+b.dataset.i];if(!it)return;sfx.ui();
+    ED.sel=it;ED.poly=null;
+    if(b.dataset.act==='del'){delSel();return}
+    if(ED.tool!=='select'){ED.tool='select';renderEdUI()}else renderProps()});
 }
 function onProp(e){const el=e.target,k=el.dataset.k,it=ED.sel;if(!k||!it||typeof it!=='object')return;
   const v=el.type==='checkbox'?el.checked:el.type==='range'?+el.value:el.value;it[k]=v;
   const o=$('#pv_'+k);if(o){const f=(PROPS[it.t]||[]).find(p=>p[0]===k);o.textContent=(+v).toFixed(f&&f[5]<1?1:0)+(f?f[6]:'')}
   edRequest();}
 function renderProps(){
+  renderItems();
   const box=$('#edProps'),it=ED.sel;
   if(!it){box.innerHTML='<p class="ro">Nessun oggetto selezionato. Usa <strong>Seleziona</strong> e clicca un oggetto sul campo.</p>';return}
   if(it==='tee'||it==='cup'){box.innerHTML=`<p class="ro"><strong>${it==='tee'?'Partenza':'Buca'}</strong>. Trascinala per spostarla.</p>`;return}
@@ -1819,6 +2189,12 @@ function renderProps(){
     else h+=`<label class="sl"><span>${lab} <b id="pv_${k}">${(+val).toFixed(p[5]<1?1:0)}${p[6]}</b></span><input type="range" data-k="${k}" min="${p[3]}" max="${p[4]}" step="${p[5]}" value="${val}"></label>`}
   h+=`<div class="row" style="margin-top:2px"><button class="btn" type="button" data-act="dup">Duplica</button><button class="btn" type="button" data-act="del">Elimina</button></div>`;
   box.innerHTML=h;
+}
+function renderItems(){
+  const box=$('#edItems'),its=ED.doc.items,n={};
+  if(!its.length){box.innerHTML='<p class="ro">Nessun oggetto: disegna almeno un campo.</p>';return}
+  box.innerHTML=its.map((it,i)=>{n[it.t]=(n[it.t]||0)+1;const tl=TOOLS.find(t=>t[0]===it.t);
+    return`<div class="mine it${it===ED.sel?' cur':''}"><i style="background:${tl?tl[2]:'#888'}"></i><button type="button" class="nm" data-act="sel" data-i="${i}" title="Seleziona">${TNAME[it.t]||it.t} ${n[it.t]}</button><button type="button" data-act="del" data-i="${i}">Elimina</button></div>`}).join('');
 }
 function renderList(){
   $('#edList').innerHTML=MINE.length?MINE.map((d,i)=>`<div class="mine${ED.doc&&d.id===ED.doc.id?' cur':''}"><span>${i+1}. ${d.name.replace(/</g,'&lt;')} · par ${d.par}</span><button type="button" data-act="open" data-id="${d.id}">Apri</button><button type="button" data-act="del" data-id="${d.id}">Elimina</button></div>`).join('')
@@ -1838,7 +2214,7 @@ function start(data){
   new ResizeObserver(resize).observe(stage);
   requestAnimationFrame(frame);
 }
-window.claude?.hot?.snapshot?.(()=>({started:G.started&&G.screen!=='over',cfg,idx:G.idx,scores:G.scores}));
+window.claude?.hot?.snapshot?.(()=>({started:G.started&&G.screen!=='over'&&!G.multi,cfg,idx:G.idx,scores:G.scores}));
 window.claude?.hot?.ready?window.claude.hot.ready(start):start(window.claude?.hot?.data??{});
 })();
 </script>

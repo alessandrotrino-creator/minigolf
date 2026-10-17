@@ -1,4 +1,4 @@
-# Mulini & Ponticelli — minigolf
+# Mulini & Ponticelli — minigolf (versione 2.0)
 
 Gioco di minigolf in italiano, tutto in un unico file: `index.html` (HTML, CSS e JavaScript inline, nessuna build, nessuna dipendenza oltre ai Google Fonts). Pubblicato su GitHub Pages: il file deve chiamarsi `index.html` e stare nella radice del repository.
 
@@ -6,7 +6,7 @@ Il gioco deve funzionare bene su PC, smartphone (verticale e orizzontale) e LIM 
 
 ## Regole di lavoro
 
-- **Non toccare ciò che non serve.** Il gioco base, le 90 buche e la fisica vanno bene così: cambia solo ciò che la richiesta riguarda.
+- **Non toccare ciò che non serve.** Il gioco base, le 162 buche e la fisica vanno bene così: cambia solo ciò che la richiesta riguarda.
 - Interfaccia e testi in italiano.
 - Le modalità Libera e Highlander a 1 giocatore devono restare invariate quando si aggiungono funzioni (Laboratorio, editor, multigiocatore sono separati e opzionali).
 - Dopo ogni modifica l'utente ricarica `index.html` su GitHub: ricordaglielo.
@@ -22,9 +22,10 @@ Dentro, in ordine:
 
 ### Sezioni del codice (in ordine)
 - **Costanti e helper geometrici**: mondo 1000×600 unità, 100 unità = 1 m. `R()`, `ell()`, `arc()`, `P()` (rombo), `ring()`, `pip()`.
-- **THEMES**: 5 ambienti (borgo, montagna, mare, giungla, deserto) con colori e stili di ostacoli, decorazioni, mulini, ostacoli mobili.
-- **Circuiti**: `BORGO`, `MONTAGNA`, `MARE`, `GIUNGLA`, `DESERTO` (18 buche ciascuno; le prime 9 più facili) + `CIRCUITS`, che include `mie` (buche dell'utente dall'editor, getter su `mineDefs()`).
+- **THEMES**: 9 ambienti (borgo, montagna, mare, giungla, deserto + dalla 2.0 lunapark, vulcano, spazio, castello) con colori e stili di ostacoli, decorazioni, mulini, ostacoli mobili. Campi facoltativi: `cliff` (colore delle pareti delle terrazze), `gz` (gravità dei salti: lo spazio ha 420 invece di 800), `waterName`/`waterMsg`/`splash` (es. lava), `quickName`/`quickMsg`/`quickCore`/`swirl` (es. buco nero).
+- **Circuiti**: `BORGO`, `MONTAGNA`, `MARE`, `GIUNGLA`, `DESERTO` e, dalla 2.0, `LUNAPARK`, `VULCANO`, `SPAZIO`, `CASTELLO` (18 buche ciascuno; le prime 9 più facili; i 4 nuovi partono più difficili e nessuna buca si chiude con un tiro dritto senza ostacoli) + `CIRCUITS` (i nuovi hanno `nuovo:1` per l'etichetta «Nuovo» nel menu), che include `mie` (buche dell'utente dall'editor, getter su `mineDefs()`).
 - **compile(def, theme)**: trasforma la definizione di una buca in segmenti di collisione, zone, ponti ecc.
+- **Terrazze (2.0)**: `terraces:[{x,y,w,h,lv}]` sono piani rialzati rettangolari (`lv` 1, 2, 3; un piano più alto si mette dentro o accanto a quello sotto). I bordi diventano `h.cliffs`: da sopra la pallina cade (`z` aumenta di `TH`=16 per livello), da sotto la fermano (`hitCliff`, solo se va verso il bordo). `stairs:[{x,y,w,h,dir}]` sono scale per salire (`dir` = verso la salita, forza `s` di default 200) e aprono il tratto di bordo che toccano. `dry:1` rende la terrazza un camminamento sopra acqua o burroni. Il livello si calcola dalla posizione (`lvAt`), quindi nessuno stato in più sulla pallina; due palline su livelli diversi non si urtano. Un salto supera un bordo solo se `z>=16`. Le terrazze si disegnano come strato chiaro sopra i terreni, con pareti spesse sui lati in basso e a destra.
 - **Audio**: sintetizzato con Web Audio (`tone`, `noise`, `sfx.*`), nessun file audio.
 - **Stato**: `cfg` (impostazioni salvate in `localStorage` `mp-cfg2`), `G` (stato di gioco), `PH` (parametri fisici; fissi tranne che nel Laboratorio).
 - **Fisica** (`physics(dt)`, passo fisso 1/240 s): attrito di rotolamento, pendenze/colline/rampe, rimbalzi su segmenti e cerchi, mulini e ostacoli mobili, salti, acqua/burroni/sabbie mobili, tubi, cattura in buca.
